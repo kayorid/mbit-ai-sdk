@@ -1,0 +1,33 @@
+{
+  "skill_name": "spec-driven-development",
+  "evals": [
+    {
+      "id": 1,
+      "name": "kickoff-feature-nova",
+      "prompt": "Estamos começando uma nova feature: gostaria de adicionar exportação de relatório mensal de progresso dos colaboradores em XLSX. HRs Admin pediram em 3 conversas diferentes nesta semana. Quero kickoff completo — não me pergunte 50 coisas, faça uma rodada estruturada para a gente sair da conversa com requirements bem definidos. Estamos no começo do projeto, não temos pasta de specs ainda.",
+      "expected_output": "Cria estrutura inicial docs/specs/ se não existir, copia templates para uma pasta _active/YYYY-MM-DD-export-progresso/, preenche requirements.md a partir do template (contexto, objetivo, personas, user stories), marca seções com [CLARIFY] onde há ambiguidade, e apresenta uma rodada estruturada de perguntas (não pingadas).",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "meio-implementacao-perdeu-contexto",
+      "prompt": "Estamos no meio da feature de notificações Slack. Já implementei a parte de webhook e o serviço base, mas perdi um pouco o fio. Não lembro bem o que falta nem se algumas decisões que tomei batem com o que combinamos. Não tenho documentação formal — só commits e algumas conversas espalhadas. Como recuperamos o controle e a partir de agora seguimos disciplinadamente?",
+      "expected_output": "Reconhece estado atual sem invenção, propõe fazer um 'catch-up' criando spec retroativa (requirements + status capturando decisões já tomadas) para depois seguir SDD. Explica que documenta o que JÁ existe primeiro, só depois decide o que falta. Aponta para fase implement/validate da skill, não força reiniciar do zero.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "finalizacao-entrega",
+      "prompt": "Acabamos de mergear o PR #156 da feature de exportação CSV (a feature está em docs/specs/_active/2026-05-10-csv-export-progress/). Quero finalizar direito — retrospectiva, arquivar, atualizar histórico do projeto, e identificar se algo aprendido aqui deve virar regra geral. O que fazemos agora?",
+      "expected_output": "Identifica que estamos na fase Retrospective. Lê requirements/design/status para extrair contexto. Cria retrospective.md a partir do template; sugere mover pasta para _completed/; atualiza INDEX.md e HISTORY.md; identifica candidatos a virar ADR ou atualização da constitution; aponta para itens de follow-up. Usa scripts/update_index.py se aplicável.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "name": "auditoria-spec-existente",
+      "prompt": "Já temos uma spec parcialmente escrita em docs/specs/_active/2026-04-28-billing-revamp/. Antes de avançar para implementação, queria uma auditoria — está bem? Tem furos? Os requirements têm critérios EARS bem formados? O design não tem over-engineering? Use a skill spec-driven-development para fazer essa varredura.",
+      "expected_output": "Roda scripts/validate_spec.py contra a pasta. Lê requirements.md, design.md, tasks.md (se existir) e identifica: critérios EARS mal formados ou ausentes, [CLARIFY] não resolvidos, seções faltando, over-engineering no design (componentes que não mapeiam para nenhum critério EARS), ausência de boundaries. Apresenta lista priorizada de gaps.",
+      "files": []
+    }
+  ]
+}

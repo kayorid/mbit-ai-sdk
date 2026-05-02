@@ -1,0 +1,13 @@
+{
+  "name": "spec-driven-development",
+  "description": "Spec-Driven Development skill for Claude Code — specs estruturadas, requisitos EARS, implementação faseada com checkpoints",
+  "version": "1.0.0",
+  "author": {
+    "name": "Kayori Dolfi",
+    "email": "kayocdi@gmail.com"
+  },
+  "homepage": "https://github.com/kayorid/spec-driven-development",
+  "repository": "https://github.com/kayorid/spec-driven-development",
+  "license": "MIT",
+  "keywords": ["specs", "requirements", "EARS", "SDD", "planning", "spec-driven-development"]
+}

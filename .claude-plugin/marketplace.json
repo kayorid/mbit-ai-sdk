@@ -1,0 +1,16 @@
+{
+  "name": "kayorid",
+  "description": "Kayori Dolfi's Claude Code plugins",
+  "owner": {
+    "name": "Kayori Dolfi",
+    "email": "kayocdi@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "spec-driven-development",
+      "description": "Spec-Driven Development skill for Claude Code — specs estruturadas, requisitos EARS, implementação faseada",
+      "version": "1.0.0",
+      "source": "./"
+    }
+  ]
+}
