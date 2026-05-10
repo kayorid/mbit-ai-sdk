@@ -1,11 +1,20 @@
 ---
-name: spec-driven-development
-description: Use sempre que o usuário estiver planejando uma fase do projeto, iniciando uma nova feature, no meio de uma implementação não trivial, ou finalizando uma entrega. Use também quando ele mencionar "spec", "especificação", "requirements", "kickoff", "planejamento", "handover", "retrospectiva", "documentar projeto", "manter histórico", ou pedir para "documentar o que vamos fazer/fizemos". Funciona como camada de harness para desenvolvimento assistido por IA — escreve specs antes do código, mantém uma pasta viva de documentação (specs, status, decisões, histórico) e impede o drift entre intenção e implementação. Cobre o ciclo end-to-end (constitution → specify → clarify → plan → tasks → implement → validate → retrospective). Acione mesmo quando o usuário não pedir explicitamente "spec" — qualquer trabalho não trivial multi-passo se beneficia desta skill.
+name: mb-sdd
+description: Use sempre que o usuário estiver planejando uma fase do projeto MB, iniciando uma nova feature, no meio de uma implementação não trivial, ou finalizando uma entrega. Acione também ao mencionar "spec", "especificação", "requirements", "kickoff", "planejamento", "handover", "retrospectiva", ou pedir para "documentar o que vamos fazer/fizemos". Spec-Driven Development do MB AI SDK — fluxo rígido com checkpoints obrigatórios, audit-trail via /mb-approve e integração com mb-ai-core, mb-review, mb-security, mb-observability e mb-retro. Cobre o ciclo end-to-end (discuss → spec → plan → execute → verify → review → ship → retro). Acione mesmo quando o usuário não pedir explicitamente "spec" — qualquer trabalho não trivial multi-passo se beneficia desta skill.
 ---
 
-# Spec-Driven Development (SDD)
+# MB Spec-Driven Development (mb-sdd)
 
-Esta skill transforma desenvolvimento assistido por IA em um processo disciplinado por especificações vivas. Cada feature passa por fases claras, cada fase produz artefatos verificáveis, e nenhum código é escrito sem uma spec que diga o que ele deve fazer.
+Esta skill é a espinha dorsal do MB AI SDK. Transforma desenvolvimento assistido por IA em um processo disciplinado por especificações vivas, com checkpoints humanos obrigatórios e audit-trail compatível com requisitos regulatórios (Bacen, CVM, LGPD).
+
+## Integração com o ecossistema MB
+
+- **Constitution corporativa** carregada via `mb-ai-core` (skill `mb-constitution`).
+- **Checkpoints registrados** via `/mb-approve <fase>` em `.mb/audit/approvals.log`.
+- **Threat-model obrigatório** (via `mb-security`) para features tocando ativos críticos.
+- **Observability design** (via `mb-observability`) integrado à fase PLAN.
+- **Review automático** (via `mb-review`) na fase SHIP.
+- **Retro estruturada** (via `mb-retro`) com promoção de learnings ao core.
 
 A intuição central é simples: **LLMs implementam bem o que está escrito; o problema é o que não está escrito**. Spec-Driven Development resolve isso fazendo da spec o ponto de verdade que o agente consulta, atualiza e respeita ao longo de todo o ciclo.
 

@@ -1,0 +1,35 @@
+{
+  "version": "0.1.0",
+  "updated": "2026-05-10",
+  "policy": "Apenas MCPs listados aqui podem ser usados em ambientes MB. Inclusão exige avaliação de segurança e aprovação do Chapter AI via PR ao mb-ai-sdk.",
+  "approved": [
+    {
+      "name": "github",
+      "publisher": "official",
+      "purpose": "Operações em repositórios GitHub Enterprise MB",
+      "risk_level": "low",
+      "data_exfiltration_review": "passed",
+      "approved_at": "2026-05-10",
+      "reviewer": "chapter-ai"
+    },
+    {
+      "name": "context7",
+      "publisher": "trusted-third-party",
+      "purpose": "Consulta a documentação técnica atualizada",
+      "risk_level": "low",
+      "data_exfiltration_review": "passed",
+      "notes": "Apenas leitura de docs públicas. Não envia código proprietário.",
+      "approved_at": "2026-05-10",
+      "reviewer": "chapter-ai"
+    }
+  ],
+  "under_review": [],
+  "rejected": [
+    {
+      "name": "<exemplo-mcp-rejeitado>",
+      "reason": "Sem documentação clara de tratamento de dados; risco de exfiltração não-mitigável.",
+      "rejected_at": "2026-05-10"
+    }
+  ],
+  "request_inclusion": "Abra PR ao mb-ai-sdk adicionando entrada em 'under_review' com: nome, publisher, propósito, link para docs de segurança, análise de risco de exfiltração."
+}

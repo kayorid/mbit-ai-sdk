@@ -1,0 +1,5 @@
+
+   ╱▔▔▔╲   📜  Novo ciclo SDD
+  ╱     ╲     Specs antes do código. Sempre.
+  ╲     ╱
+   ╲▁▁▁╱     discuss → spec → plan → execute → verify → review → ship → retro

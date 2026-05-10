@@ -1,0 +1,49 @@
+# MBit Slack App — manifesto declarativo
+# Use no Slack App Configuration > Manifest > Edit Manifest
+# Documentação: https://api.slack.com/reference/manifests
+
+display_information:
+  name: MBit
+  description: Harness corporativo de desenvolvimento assistido por IA do Mercado Bitcoin
+  background_color: "#E8550C"
+  long_description: |
+    MBit é o harness oficial de IA do MB. Este bot expõe comandos do SDK no Slack
+    (status do squad, dashboard, custo, propostas) e envia notificações de eventos
+    relevantes (releases, achievements, exceções de segurança).
+
+features:
+  bot_user:
+    display_name: MBit
+    always_online: true
+
+  slash_commands:
+    - command: /mbit
+      url: https://mbit-bot.mercadobitcoin.com.br/slack/commands
+      description: Comandos do MBit AI SDK
+      usage_hint: "help | status | dashboard | cost | propose"
+      should_escape: false
+
+oauth_config:
+  scopes:
+    bot:
+      - chat:write
+      - chat:write.public
+      - commands
+      - users:read
+      - users:read.email
+      - channels:read
+      - groups:read
+      - reactions:write
+
+settings:
+  event_subscriptions:
+    request_url: https://mbit-bot.mercadobitcoin.com.br/slack/events
+    bot_events:
+      - app_mention
+      - message.im
+  interactivity:
+    is_enabled: true
+    request_url: https://mbit-bot.mercadobitcoin.com.br/slack/interact
+  org_deploy_enabled: true
+  socket_mode_enabled: false
+  token_rotation_enabled: true

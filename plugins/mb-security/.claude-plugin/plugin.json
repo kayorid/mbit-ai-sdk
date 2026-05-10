@@ -1,0 +1,22 @@
+{
+  "name": "mb-security",
+  "description": "MB AI SDK — threat modeling, compliance (Bacen/CVM/LGPD/Travel Rule), padrões cripto e hooks bloqueantes específicos",
+  "version": "0.2.0",
+  "author": {
+    "name": "Chapter AI - Mercado Bitcoin",
+    "email": "chapter-ai@mercadobitcoin.com.br"
+  },
+  "homepage": "https://github.com/mercadobitcoin/mb-ai-sdk",
+  "repository": "https://github.com/mercadobitcoin/mb-ai-sdk",
+  "license": "Proprietary",
+  "keywords": [
+    "mb",
+    "security",
+    "compliance",
+    "cripto",
+    "threat-model",
+    "bacen",
+    "cvm",
+    "lgpd"
+  ]
+}

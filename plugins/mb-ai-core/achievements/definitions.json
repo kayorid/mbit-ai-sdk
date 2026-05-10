@@ -1,0 +1,89 @@
+{
+  "version": "0.1.0",
+  "achievements": [
+    {
+      "id": "first-bootstrap",
+      "name": "Primeiro voo",
+      "icon": "🌱",
+      "description": "Squad concluiu o primeiro /mb-bootstrap",
+      "criteria": "exists:.mb/CLAUDE.md"
+    },
+    {
+      "id": "first-cycle",
+      "name": "Ciclo completo",
+      "icon": "🎯",
+      "description": "Primeira feature concluída do DISCUSS ao RETRO",
+      "criteria": "archived_specs>=1"
+    },
+    {
+      "id": "defender",
+      "name": "Defensor",
+      "icon": "🛡",
+      "description": "Hook bloqueante salvou um vazamento de segredo",
+      "criteria": "blocks_secrets>=1"
+    },
+    {
+      "id": "audit-ready",
+      "name": "Auditável",
+      "icon": "📋",
+      "description": "5 ciclos completos com aprovações registradas",
+      "criteria": "approvals>=5 AND archived_specs>=5"
+    },
+    {
+      "id": "mature-squad",
+      "name": "Squad maduro",
+      "icon": "🏆",
+      "description": "3+ ciclos sem exceção, 2+ retros com promoção, Champion ativo 8+ semanas. Destrava /mb-fast.",
+      "criteria": "archived_specs>=3 AND exceptions==0 AND promoted_learnings>=2"
+    },
+    {
+      "id": "core-contributor",
+      "name": "Contribuidor core",
+      "icon": "🧠",
+      "description": "Squad teve learning promovido à constitution corporativa",
+      "criteria": "promoted_learnings>=1"
+    },
+    {
+      "id": "skill-author",
+      "name": "Autor de skills",
+      "icon": "⚡",
+      "description": "Squad criou primeira skill custom",
+      "criteria": "custom_skills>=1"
+    },
+    {
+      "id": "runbook-master",
+      "name": "Mestre de runbooks",
+      "icon": "📖",
+      "description": "Squad documentou 5+ runbooks",
+      "criteria": "runbooks>=5"
+    },
+    {
+      "id": "threat-modeler",
+      "name": "Threat modeler",
+      "icon": "🔍",
+      "description": "Squad fez 3+ threat models completos",
+      "criteria": "threat_models>=3"
+    },
+    {
+      "id": "hot-shot",
+      "name": "Apagador profissional",
+      "icon": "🚒",
+      "description": "Hotfix completado com post-mortem em 48h",
+      "criteria": "hotfixes_with_postmortem>=1"
+    },
+    {
+      "id": "zero-block-week",
+      "name": "Semana limpa",
+      "icon": "🌟",
+      "description": "7 dias sem hook bloqueante disparado",
+      "criteria": "no_blocks_for_days>=7"
+    },
+    {
+      "id": "centurion",
+      "name": "Centurião",
+      "icon": "💯",
+      "description": "100 commits referenciando spec",
+      "criteria": "spec_commits>=100"
+    }
+  ]
+}
