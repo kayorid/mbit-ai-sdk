@@ -21,6 +21,12 @@ if [[ ! -f "$ALLOWLIST_FILE" ]]; then
   exit 2
 fi
 
+# M-3: validate JSON before parsing
+if ! jq empty "$ALLOWLIST_FILE" 2>/dev/null; then
+  echo "[mb-ai-core] WARN — allowlist file corrompido ($ALLOWLIST_FILE). Bloqueando MCP preventivamente. Notifique o Chapter AI." >&2
+  exit 2
+fi
+
 APPROVED=$(jq -r '.approved[].name' "$ALLOWLIST_FILE" 2>/dev/null || true)
 
 if echo "$APPROVED" | grep -qx "$SERVER"; then

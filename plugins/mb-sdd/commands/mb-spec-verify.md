@@ -28,6 +28,13 @@ Conduza verificação goal-backward — não basta marcar tasks, precisa provar 
    - FAIL: Y
    - PARTIAL: Z
 8. Se houver FAIL/PARTIAL inaceitável, retorne a EXECUTE com nova task.
-9. Se tudo PASS, peça `/mb-approve VERIFY` e oriente seguir para REVIEW.
+9. **Para features que usam IA em runtime** (chatbot, RAG, classificador, antifraude):
+   - Verifique se há `evals/<feature>/` configurado.
+   - Se não há, oriente criar via `/mb-evals-init <feature>` antes de prosseguir.
+   - Rode `/mb-evals-ci <feature>` — score abaixo do threshold bloqueia VERIFY.
+   - Anexe link da run em `verification.md`.
+10. Se tudo PASS (incluindo evals quando aplicável), peça `/mb-approve VERIFY` e oriente seguir para REVIEW.
 
 **Não declare "pronto" sem `verification.md` com PASS em todos os critérios obrigatórios.**
+
+**Para features AI: sem eval com score acima do threshold, VERIFY não passa.**

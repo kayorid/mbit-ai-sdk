@@ -1,6 +1,7 @@
 {
-  "version": "0.1.0",
+  "version": "0.3.1",
   "updated": "2026-05-10",
+  "review_cycle": "trimestral pelo Chapter AI; emergencial se MCP listado sofrer incidente público",
   "policy": "Apenas MCPs listados aqui podem ser usados em ambientes MB. Inclusão exige avaliação de segurança e aprovação do Chapter AI via PR ao mb-ai-sdk.",
   "approved": [
     {

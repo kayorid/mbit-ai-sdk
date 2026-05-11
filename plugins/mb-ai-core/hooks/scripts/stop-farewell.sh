@@ -38,10 +38,23 @@ QUOTE="${FAREWELLS[$IDX]}"
 
 cat <<EOF >&2
 
-${C_GOLD}━━━ MB AI SDK ━━━${C_RESET}
+${C_GOLD}━━━ MBit ━━━${C_RESET}
 ${C_DIM}Sessão encerrada · ${APPROVALS_TODAY} aprovação(ões) hoje · ${BLOCKS_TODAY} bloqueio(s) defensivo(s)${C_RESET}
 ${C_GOLD}${QUOTE}${C_RESET}
 
 EOF
+
+# M-9: Stop hook stderr é capturado pelo Claude Code CLI mas pode ser
+# filtrado em IDEs (Cursor, JetBrains). Para compatibilidade ampla,
+# também emitimos via additionalContext quando jq disponível.
+if command -v jq >/dev/null 2>&1; then
+  PLAIN_FAREWELL="MBit · Sessão encerrada · ${APPROVALS_TODAY} aprovação(ões) hoje · ${BLOCKS_TODAY} bloqueio(s) defensivo(s) · ${QUOTE}"
+  jq -n --arg ctx "$PLAIN_FAREWELL" '{
+    "hookSpecificOutput": {
+      "hookEventName": "Stop",
+      "additionalContext": $ctx
+    }
+  }' 2>/dev/null || true
+fi
 
 exit 0

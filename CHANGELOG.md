@@ -4,6 +4,39 @@ Todas as mudanças notáveis no MBit (MB AI SDK) serão documentadas aqui.
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/), versionamento semântico.
 
+## [0.3.1] — 2026-05-10
+
+### Corrigido
+- **Bug #1** `doctor.sh` lista hardcoded de plugins atualizada para incluir `mb-cost` e `mb-evals` (estava reportando-os como ausentes).
+- **Bug #2** `/mb-help` reescrito para listar 9 plugins (era 7) + 50+ comandos por categoria.
+- **Bug #3** `constitution.md` atualizada para v0.3.1 — menciona mb-cost, mb-evals, achievements, /mb-fast, regras sobre features AI em runtime e custo de IA.
+- **Bug #4** `mb-evals-compare` agora é script bash real (`compare-eval.sh`) que faz join + diff de scores entre runs, não só doc.
+- **Bug #5** `mb-sdd` integra `mb-evals` na fase VERIFY — features AI exigem `/mb-evals-ci` antes de aprovação.
+
+### Adicionado
+- **`/mb-version`** — mostra versões de todos os plugins MBit + dependências do sistema (jq, git, bash) com status de sincronização.
+- **`/mb-list-plugins`** — lista plugins MBit ativados em `~/.claude/settings.json`.
+- **4 achievements novos para v0.3:** `first-eval-run`, `fast-mode-unlocked`, `theme-customizer`, `compliance-aware`. Total agora: **16 conquistas**.
+- **`tests/completeness-check.sh`** — script de garantia que valida 154+ itens (plugins, comandos, skills, ASCII, hooks, scripts, docs, integrações, achievements, versões sincronizadas). Loop iterativo até zero falhas.
+- **Dashboard upgrade** — agora mostra evals configurados, runs total, custo IA, status do modo `/mb-fast`.
+
+### MEDIUMs do REVIEW corrigidos
+- **M-1** Documentado em `mb-security/hooks/hooks.json` que Write/Edit overlap com `mb-ai-core/secret-scan` é intencional (responsabilidades distintas) — consolidação planejada para v0.5.
+- **M-3** `mcp-allowlist.sh` valida JSON do allowlist antes de parsing; mensagem de WARN explícita se corrompido.
+- **M-4** Truncamento de SQUAD via `jq -Rr '.[0:N]'` (UTF-8 safe) em vez de `head -c`. Funciona com nomes acentuados.
+- **M-7** `achievements/checker.sh` agora cacheia `last_evaluated_at` em `.mb/achievements.json` — re-avalia apenas a cada 5 min (override via `MB_FORCE_ACHIEVEMENT_CHECK`). Evita custo em monorepos.
+- **M-9** `stop-farewell.sh` emite tanto stderr (CLI) quanto `additionalContext` (Cursor/IDEs que filtram stderr).
+
+### Atualizado
+- `MANUAL.md` — adendos v0.2 e v0.3 com mb-cost, achievements, identidade visual, mb-evals, comandos novos, suite de testes, governança.
+- `PRESENTATION.md` — slide 7 atualizado para 9 plugins.
+- `docs/playbooks/install-by-role.md` — `/mb-init` wizard, `mb-cost`/`mb-evals` no JSON de exemplo.
+- `docs/faq.md` — 11 perguntas novas sobre features v0.2/v0.3.
+- `mcp-allowlist.json` — versão bumped para 0.3.1, `review_cycle` documentado.
+
+### Bumpado
+- Todos os 9 plugins de `0.3.0` para `0.3.1` (sincronizado em marketplace + plugin.json).
+
 ## [0.3.0] — 2026-05-10
 
 ### Adicionado

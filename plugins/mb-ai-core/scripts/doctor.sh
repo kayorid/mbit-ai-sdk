@@ -82,7 +82,7 @@ fi
 
 sec "Plugins MB"
 PLUGIN_PARENT=$(dirname "$PLUGIN_ROOT")
-EXPECTED=(mb-ai-core mb-bootstrap mb-sdd mb-review mb-observability mb-security mb-retro)
+EXPECTED=(mb-ai-core mb-bootstrap mb-sdd mb-review mb-observability mb-security mb-retro mb-cost mb-evals)
 for p in "${EXPECTED[@]}"; do
   if [[ -d "$PLUGIN_PARENT/$p" && -f "$PLUGIN_PARENT/$p/.claude-plugin/plugin.json" ]]; then
     VER=$(jq -r '.version // "?"' "$PLUGIN_PARENT/$p/.claude-plugin/plugin.json" 2>/dev/null)

@@ -14,7 +14,28 @@ STATE_FILE=".mb/achievements.json"
 # Inicializa state se não existir
 if [[ ! -f "$STATE_FILE" ]]; then
   mkdir -p "$(dirname "$STATE_FILE")"
-  echo '{"unlocked": []}' > "$STATE_FILE"
+  echo '{"unlocked": [], "last_evaluated_at": "1970-01-01T00:00:00Z"}' > "$STATE_FILE"
+fi
+
+# M-7: cache — só re-avalia a cada 5 min para evitar custo em monorepos
+if command -v jq >/dev/null 2>&1; then
+  LAST_EVAL=$(jq -r '.last_evaluated_at // "1970-01-01T00:00:00Z"' "$STATE_FILE" 2>/dev/null || echo "1970-01-01T00:00:00Z")
+  NOW_EPOCH=$(date +%s)
+  LAST_EPOCH=0
+  if last_eval_epoch=$(date -j -f "%Y-%m-%dT%H:%M:%SZ" "$LAST_EVAL" +%s 2>/dev/null); then
+    LAST_EPOCH=$last_eval_epoch
+  elif last_eval_epoch=$(date -d "$LAST_EVAL" +%s 2>/dev/null); then
+    LAST_EPOCH=$last_eval_epoch
+  fi
+  AGE=$((NOW_EPOCH - LAST_EPOCH))
+  # Force re-eval se MB_FORCE_ACHIEVEMENT_CHECK setado (testes)
+  if [[ $AGE -lt 300 && -z "${MB_FORCE_ACHIEVEMENT_CHECK:-}" ]]; then
+    exit 0  # cache válido
+  fi
+  # Atualiza timestamp ao final (mesmo se nada mudou)
+  TS_NOW=$(date -u +%FT%TZ)
+  TMP=$(mktemp)
+  jq --arg ts "$TS_NOW" '.last_evaluated_at = $ts' "$STATE_FILE" > "$TMP" && mv "$TMP" "$STATE_FILE"
 fi
 
 # Coleta métricas do squad
@@ -73,6 +94,18 @@ metric() {
     spec_commits)
       git log --oneline 2>/dev/null | grep -c '\[spec:' || echo 0
       ;;
+    evals_runs)
+      find evals -path '*/runs/*.jsonl' 2>/dev/null | wc -l | tr -d ' '
+      ;;
+    fast_mode_unlocked)
+      [[ -f .mb/config.yaml ]] && grep -q 'modes_unlocked.*fast' .mb/config.yaml 2>/dev/null && echo 1 || echo 0
+      ;;
+    custom_theme)
+      [[ -f .mb/config.yaml ]] && grep -E '^theme:[[:space:]]*(festive|compact|accessible)' .mb/config.yaml 2>/dev/null | head -1 | grep -q . && echo 1 || echo 0
+      ;;
+    compliance_checks)
+      find docs/specs -name 'COMPLIANCE.md' 2>/dev/null | wc -l | tr -d ' '
+      ;;
     *)
       echo 0
       ;;
@@ -101,6 +134,10 @@ check_criteria() {
     "hotfixes_with_postmortem>=1")  [[ "$(metric hotfixes_with_postmortem)" -ge 1 ]] ;;
     "no_blocks_for_days>=7")        [[ "$(metric no_blocks_for_days)" -ge 7 ]] ;;
     "spec_commits>=100")            [[ "$(metric spec_commits)" -ge 100 ]] ;;
+    "evals_runs>=1")                [[ "$(metric evals_runs)" -ge 1 ]] ;;
+    "fast_mode_unlocked")           [[ "$(metric fast_mode_unlocked)" -eq 1 ]] ;;
+    "custom_theme")                 [[ "$(metric custom_theme)" -eq 1 ]] ;;
+    "compliance_checks>=1")         [[ "$(metric compliance_checks)" -ge 1 ]] ;;
     *)
       return 1
       ;;

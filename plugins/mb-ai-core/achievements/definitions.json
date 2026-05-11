@@ -84,6 +84,34 @@
       "icon": "💯",
       "description": "100 commits referenciando spec",
       "criteria": "spec_commits>=100"
+    },
+    {
+      "id": "first-eval-run",
+      "name": "Primeira avaliação",
+      "icon": "🧪",
+      "description": "Squad rodou primeira eval de feature AI via mb-evals",
+      "criteria": "evals_runs>=1"
+    },
+    {
+      "id": "fast-mode-unlocked",
+      "name": "Modo expresso",
+      "icon": "⚡",
+      "description": "Squad demonstrou maturidade e destravou /mb-fast",
+      "criteria": "fast_mode_unlocked"
+    },
+    {
+      "id": "theme-customizer",
+      "name": "Estilista",
+      "icon": "🎨",
+      "description": "Squad customizou tema visual no .mb/config.yaml",
+      "criteria": "custom_theme"
+    },
+    {
+      "id": "compliance-aware",
+      "name": "Compliance-aware",
+      "icon": "📋",
+      "description": "Squad rodou /mb-compliance-check em pelo menos uma feature",
+      "criteria": "compliance_checks>=1"
     }
   ]
 }

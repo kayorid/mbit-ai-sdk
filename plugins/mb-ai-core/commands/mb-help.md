@@ -1,48 +1,102 @@
 ---
-description: Visão geral do MB AI SDK — plugins ativos, comandos disponíveis, links para documentação
+description: Visão geral do MBit — 9 plugins, comandos por categoria, links
 ---
 
 # /mb-help
 
-Você é um agente do MB AI SDK. Quando este comando for invocado, produza uma visão geral concisa cobrindo:
+Apresente visão geral concisa do MBit.
 
-## 1. Identidade do SDK
+## 1. Identidade
 
-Apresente brevemente: "MB AI SDK — harness corporativo de desenvolvimento assistido por IA do Mercado Bitcoin. Padroniza processo, garante auditabilidade e segurança, mantém squads alinhados sem engessar especialização."
+> **MBit (MB AI SDK) v0.3.1** — harness corporativo de desenvolvimento assistido por IA do Mercado Bitcoin. Padroniza processo, garante auditabilidade e segurança, mantém squads alinhados sem engessar especialização.
 
-## 2. Plugins do SDK
+## 2. Os 9 plugins
 
-Liste os 7 plugins do SDK e o que cada um entrega:
+| Plugin | Propósito |
+|--------|-----------|
+| `mb-ai-core` | Constitution, hooks bloqueantes, MCP allowlist, achievements, doctor, dashboard, snapshot, search, themes |
+| `mb-bootstrap` | Onboarding híbrido do squad |
+| `mb-sdd` | Ciclo Spec-Driven rígido com checkpoints |
+| `mb-review` | Code/security/spec review formais |
+| `mb-observability` | Design e revisão de observabilidade |
+| `mb-security` | Threat modeling, compliance, hooks PII/cripto |
+| `mb-retro` | Retrospectivas e memória organizacional |
+| `mb-cost` | Captura de tokens, custo por fase/feature, alertas |
+| `mb-evals` | Eval framework para features que usam IA em runtime |
 
-| Plugin | Propósito | Comandos principais |
-|--------|-----------|---------------------|
-| `mb-ai-core` | Constitution, hooks, MCPs aprovados | `/mb-help`, `/mb-status`, `/mb-approve`, `/mb-exception` |
-| `mb-bootstrap` | Onboarding híbrido do squad | `/mb-bootstrap`, `/mb-enrich-*` |
-| `mb-sdd` | Ciclo Spec-Driven rígido | `/mb-spec`, `/mb-hotfix`, `/mb-spike` |
-| `mb-review` | Code/security/spec review | `/mb-review-pr`, `/mb-review-security`, `/mb-review-spec` |
-| `mb-observability` | Design e revisão de observabilidade | `/mb-observability-design`, `/mb-observability-review` |
-| `mb-security` | Threat modeling, compliance, cripto | `/mb-threat-model`, `/mb-compliance-check` |
-| `mb-retro` | Retrospectivas e learnings | `/mb-retro`, `/mb-retro-promote` |
+## 3. Comandos por categoria
 
-## 3. Por onde começar
+**Setup & diagnóstico**
+- `/mb-init` — wizard de primeira instalação
+- `/mb-doctor` — health check completo
+- `/mb-status` — diagnóstico do squad
+- `/mb-version` — versões instaladas
+- `/mb-update` — atualiza SDK
 
-- **Squad novo no SDK:** rode `/mb-bootstrap` (Tech Lead conduz, Chapter AI acompanha).
-- **Squad já bootstrapado, nova feature:** rode `/mb-spec`.
-- **Verificar estado da instalação:** rode `/mb-status`.
-- **Algo travando o trabalho:** rode `/mb-exception`.
+**Squad & contexto**
+- `/mb-bootstrap` — onboarding inicial
+- `/mb-bootstrap-rescan` — reanálise (com auto-snapshot)
+- `/mb-enrich-domain | -runbooks | -skills` — missões de enriquecimento
+- `/mb-new-skill <slug>` — scaffolder rápido
 
-## 4. Documentação
+**Ciclo SDD**
+- `/mb-spec` — ciclo completo (8 fases)
+- `/mb-spec-discuss | -requirements | -design | -plan | -execute | -verify | -retro` — fases isoladas
+- `/mb-hotfix` — modo expresso (post-mortem 48h)
+- `/mb-spike` — exploração descartável
+- `/mb-fast` — modo relaxado (squads maduros)
+- `/mb-approve <fase>` — checkpoint humano
+- `/mb-exception` — exceção formal
 
-Links relevantes:
-- Documento de design completo: `docs/plans/2026-05-10-mb-ai-sdk-design.md`
-- Guia de instalação por papel: `docs/playbooks/install-by-role.md`
-- Governança e RACI: `docs/governance/`
-- FAQ: `docs/faq.md`
+**Review**
+- `/mb-review-pr | -security | -spec | -fix`
 
-## 5. Onde pedir ajuda
+**Observabilidade & segurança**
+- `/mb-observability-design | -review`
+- `/mb-runbook-from-incident <descrição>`
+- `/mb-threat-model`
+- `/mb-security-checklist`
+- `/mb-compliance-check <bacen|cvm|lgpd|travel-rule|pci>`
+- `/mb-secret-rotate`
 
-- Canal Slack: `#mb-ai-sdk`
-- Chapter AI: `chapter-ai@mercadobitcoin.com.br`
-- Issues: repo `mb-ai-sdk` no GitHub Enterprise
+**Retro & aprendizado**
+- `/mb-retro` — retrospectiva
+- `/mb-retro-digest` — resumo das últimas N retros
+- `/mb-retro-promote` — promove ao core
+- `/mb-retro-extract-skill` — extrai skill custom
+- `/mb-retro-quarterly` — consolidação trimestral
 
-Mantenha a resposta em uma única tela, sem encher de detalhes desnecessários.
+**Custo & avaliação**
+- `/mb-cost | -feature | -budget | -alert`
+- `/mb-evals-init | -run | -compare | -ci`
+
+**UX & visual**
+- `/mb-banner` — banner MBit
+- `/mb-ascii <nome>` — ASCII de momento-chave
+- `/mb-theme set/show` — tema visual
+- `/mb-dashboard` — painel ASCII
+- `/mb-achievements` — conquistas
+- `/mb-snapshot create/list/restore`
+- `/mb-search <termo>` — busca em specs
+- `/mb-tutorial init/roteiro/reset` — sandbox guiado
+
+## 4. Por onde começar
+
+| Situação | Comando |
+|----------|---------|
+| Primeira vez no SDK | `/mb-init` |
+| Squad novo no MBit | `/mb-bootstrap` (TL conduz) |
+| Nova feature | `/mb-spec <slug>` |
+| Verificar instalação | `/mb-doctor` |
+| Algo travou | `/mb-exception` |
+| Tutorial passo a passo | `/mb-tutorial init` |
+
+## 5. Documentação e suporte
+
+- **Docs:** [`README.md`](https://github.com/kayorid/mbit-ai-sdk), `docs/manual/MANUAL.md`, `docs/MIGRATION.md`, `docs/PLUGIN-DEVELOPMENT.md`
+- **Slack:** `#mb-ai-sdk`
+- **Chapter AI:** `chapter-ai@mercadobitcoin.com.br`
+- **Issues:** [github.com/kayorid/mbit-ai-sdk/issues](https://github.com/kayorid/mbit-ai-sdk/issues)
+- **Vulnerabilidade:** ver [`SECURITY.md`](https://github.com/kayorid/mbit-ai-sdk/blob/main/SECURITY.md)
+
+Mantenha resposta concisa em uma tela. ⬡

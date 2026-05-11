@@ -27,7 +27,13 @@ cd "$CWD" 2>/dev/null || true
 
 if [[ -f .mb/CLAUDE.md ]]; then
   BOOT="✓"
-  SQUAD=$(grep -m1 '^# CLAUDE.md' .mb/CLAUDE.md 2>/dev/null | sed 's/^# CLAUDE.md — //' | head -c 20 || echo "squad")
+  # M-4: trunca por chars (UTF-8 safe via cut em modo character) com fallback
+  SQUAD_RAW=$(grep -m1 '^# CLAUDE.md' .mb/CLAUDE.md 2>/dev/null | sed 's/^# CLAUDE.md — //' || echo "squad")
+  if command -v jq >/dev/null 2>&1; then
+    SQUAD=$(printf '%s' "$SQUAD_RAW" | jq -Rr '.[0:20]')
+  else
+    SQUAD=$(printf '%s' "$SQUAD_RAW" | cut -c 1-20)
+  fi
 fi
 
 if [[ -d docs/specs/_active ]]; then

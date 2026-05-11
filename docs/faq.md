@@ -85,4 +85,36 @@ R: Em ordem:
 4. Issue no repo.
 
 **P: Tem treinamento?**
-R: Sim — onboarding de 1h ao instalar, 4h para Tech Leads, 8h para AI Champions. Calendário interno tem datas.
+R: Sim — onboarding de 1h ao instalar, 4h para Tech Leads, 8h para AI Champions. Calendário interno tem datas. Sandbox guiado: `/mb-tutorial init` (45-60 min auto-conduzido).
+
+## Features v0.2 e v0.3
+
+**P: O que é `mb-cost` e quando usar?**
+R: Plugin que captura uso de tokens via hook PostToolUse. Mostra custo por fase, feature, dia, mês. Use sempre — princípio MBit #9 ("custo de IA é decisão de engenharia"). Configure orçamento mensal: `/mb-cost-budget set 800`.
+
+**P: O que é `mb-evals` e quando usar?**
+R: Eval framework para features que **usam** IA em runtime (chatbot, RAG, classificador, antifraude). Garante que mudança de prompt/modelo não regride qualidade. Obrigatório para features AI antes de SHIP. Comece com `/mb-evals-init <feature>`.
+
+**P: Como destravar `/mb-fast`?**
+R: Squad maduro destrava automaticamente quando atinge: 3+ ciclos SDD completos, 0 exceções abertas, 2+ learnings promovidos ao core, 5+ achievements. Verifique progresso com `/mb-fast` (mostra critérios pendentes).
+
+**P: Como funciona o achievement system?**
+R: 12 conquistas catalogadas (de "Primeiro voo" a "Squad maduro"). Notificação celebrativa aparece automaticamente em hook Stop quando uma é desbloqueada. Veja todas em `/mb-achievements`.
+
+**P: Posso mudar o tema visual do MBit?**
+R: Sim — `/mb-theme set festive` (vibrante para releases) ou `compact` (CI), `accessible` (alto contraste), `none` (sem cores). Veja com `/mb-theme show`.
+
+**P: Como busco em specs antigas?**
+R: `/mb-search <termo>` faz grep estruturado em `_active/` e `_archive/` com excerpt. Versão semântica via embeddings em v1.5.
+
+**P: Quero criar uma skill custom para meu squad. Como?**
+R: `/mb-new-skill <slug>` cria scaffolding em `.mb/skills/mb-<slug>/`. Edite `SKILL.md` com description rica + triggers em português. Para promover ao core corporativo: `/mb-retro-promote`.
+
+**P: O dashboard mostra dados em tempo real?**
+R: `/mb-dashboard` lê `.mb/audit/*` que é atualizado por hooks. Refresca a cada invocação. Sparkline de ciclos por trimestre, maturidade %, achievements N/12, próxima ação contextual.
+
+**P: Como faço rollback se algo deu errado?**
+R: `/mb-snapshot list` mostra backups; `/mb-snapshot restore <name>` reverte. Operações destrutivas (rescan) criam snapshot automático antes.
+
+**P: O CI da GitHub Actions é distribuído ou só do SDK?**
+R: Os dois. `.github/workflows/mb-ai-checks.yml` é distribuído — squads incluem em seus repos via `uses: mercadobitcoin/mbit-ai-sdk/.github/workflows/mb-ai-checks.yml@main`. `.github/workflows/sdk-ci.yml` roda no próprio repo MBit (smoke tests + ShellCheck + version sync).

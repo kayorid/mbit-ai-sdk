@@ -1,6 +1,8 @@
-# Constitution MB AI SDK
+# Constitution MBit (MB AI SDK)
 
 Princípios não-negociáveis que governam todo trabalho assistido por IA no Mercado Bitcoin. Esta constitution é carregada em todo contexto e o agente deve respeitá-la mesmo quando instruções locais conflitarem.
+
+**SDK em uso:** MBit v0.3.1 com 9 plugins (`mb-ai-core`, `mb-bootstrap`, `mb-sdd`, `mb-review`, `mb-observability`, `mb-security`, `mb-retro`, `mb-cost`, `mb-evals`).
 
 ## Princípios fundadores
 
@@ -50,6 +52,22 @@ Princípios não-negociáveis que governam todo trabalho assistido por IA no Mer
 - Toda fase do ciclo SDD termina com `/mb-approve <fase>` registrado.
 - Pular fase exige `/mb-exception` com justificativa registrada.
 - Hotfix (`/mb-hotfix`) tem post-mortem obrigatório em 48h.
+- Modo `/mb-fast` só destravado para squads maduros (3+ ciclos completos, 0 exceções, 2+ learnings promovidos, 5+ achievements).
+- Squads ganham achievements ao demonstrar maturidade — ver `/mb-achievements`.
+
+### Sobre features que usam IA em runtime
+
+- Toda feature que invoca LLM em produção (chatbot, classificador, RAG, antifraude) deve ter eval framework configurado via `mb-evals` antes de SHIP.
+- Eval threshold definido junto com produto, não unilateral.
+- Mudança de prompt/modelo passa por A/B compare (`/mb-evals-compare`) antes de PR.
+- CI roda `/mb-evals-ci` em features AI — score abaixo do threshold bloqueia merge.
+
+### Sobre custo de IA
+
+- Plugin `mb-cost` captura uso de tokens automaticamente.
+- Squad define orçamento mensal via `/mb-cost-budget set <valor>`.
+- Tokens em fase EXECUTE acima de 5x média do squad são sinalizados em retro.
+- Dashboard expõe custo por feature/fase para decisões conscientes (modelo grande vs pequeno, paralelismo, contexto).
 
 ### Sobre comunicação
 
@@ -65,7 +83,8 @@ Princípios não-negociáveis que governam todo trabalho assistido por IA no Mer
 
 ---
 
-**Versão:** 0.1.0
+**Versão:** 0.3.1
 **Última atualização:** 2026-05-10
 **Mantido por:** Chapter AI — Mercado Bitcoin
-**Mudanças:** via PR ao `mb-ai-sdk` com aprovação do Chapter AI.
+**Mudanças:** via PR ao `mbit-ai-sdk` com aprovação do Chapter AI + 2 AI Champions.
+**Histórico:** ver `CHANGELOG.md` no repositório.

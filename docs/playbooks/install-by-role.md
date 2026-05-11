@@ -8,20 +8,21 @@ Como instalar e configurar o MB AI SDK conforme seu papel.
 
 ### O que você precisa fazer uma vez
 
-1. **Manter o repositório `mercadobitcoin/mb-ai-sdk`** no GitHub Enterprise.
-2. **Validar instalação local** completa:
-   ```bash
-   git clone git@github.enterprise.mb:mercadobitcoin/mb-ai-sdk.git
-   cd mb-ai-sdk
+1. **Manter o repositório `mercadobitcoin/mbit-ai-sdk`** no GitHub Enterprise (espelho do `kayorid/mbit-ai-sdk` para devs externos).
+2. **Validar instalação local** completa via wizard automático:
    ```
-3. **Em `~/.claude/settings.json`**:
+   /mb-init
+   ```
+   Configura `~/.claude/settings.json` com 9 plugins + backup automático.
+
+   **Ou setup manual** em `~/.claude/settings.json`:
    ```json
    {
      "extraKnownMarketplaces": {
        "mb": {
          "source": {
            "source": "github",
-           "repo": "mercadobitcoin/mb-ai-sdk"
+           "repo": "mercadobitcoin/mbit-ai-sdk"
          }
        }
      },
@@ -32,12 +33,14 @@ Como instalar e configurar o MB AI SDK conforme seu papel.
        "mb-review@mb": true,
        "mb-observability@mb": true,
        "mb-security@mb": true,
-       "mb-retro@mb": true
+       "mb-retro@mb": true,
+       "mb-cost@mb": true,
+       "mb-evals@mb": true
      }
    }
    ```
-4. **Validar** com `/mb-status` em qualquer repositório de teste.
-5. **Configurar permissões** no GitHub Enterprise para PRs ao SDK (label `proposal` requer review do Chapter).
+3. **Validar** com `/mb-doctor` em qualquer repositório de teste.
+4. **Configurar permissões** no GitHub Enterprise para PRs ao SDK (label `proposal` requer review do Chapter).
 
 ### Suas responsabilidades operacionais
 

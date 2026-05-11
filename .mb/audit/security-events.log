@@ -92,3 +92,99 @@
 2026-05-11T00:13:09Z | hook=pre-tool-private-key-scan | tool=Write | path=src/key.pem | status=BLOCKED
 2026-05-11T00:13:09Z | hook=pre-tool-private-key-scan | tool=Write | path=src/wallet.json | status=BLOCKED
 2026-05-11T00:13:09Z | hook=pre-tool-private-key-scan | tool=Write | path=src/eth.ts | status=BLOCKED
+2026-05-11T00:13:59Z | hook=pre-tool-pii-scan | tool=Write | path=src/cliente.ts | status=BLOCKED | type=CPF
+2026-05-11T00:13:59Z | hook=pre-tool-pii-scan | tool=Write | path=src/empresa.ts | status=BLOCKED | type=CNPJ
+2026-05-11T00:13:59Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:13:59Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:13:59Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:13:59Z | hook=pre-tool-private-key-scan | tool=Write | path=src/key.pem | status=BLOCKED
+2026-05-11T00:13:59Z | hook=pre-tool-private-key-scan | tool=Write | path=src/wallet.json | status=BLOCKED
+2026-05-11T00:13:59Z | hook=pre-tool-private-key-scan | tool=Write | path=src/eth.ts | status=BLOCKED
+2026-05-11T00:33:21Z | hook=pre-tool-pii-scan | tool=Write | path=src/cliente.ts | status=BLOCKED | type=CPF
+2026-05-11T00:33:21Z | hook=pre-tool-pii-scan | tool=Write | path=src/empresa.ts | status=BLOCKED | type=CNPJ
+2026-05-11T00:33:21Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:33:21Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:33:22Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:33:22Z | hook=pre-tool-private-key-scan | tool=Write | path=src/key.pem | status=BLOCKED
+2026-05-11T00:33:22Z | hook=pre-tool-private-key-scan | tool=Write | path=src/wallet.json | status=BLOCKED
+2026-05-11T00:33:22Z | hook=pre-tool-private-key-scan | tool=Write | path=src/eth.ts | status=BLOCKED
+2026-05-11T00:33:38Z | hook=pre-tool-pii-scan | tool=Write | path=src/cliente.ts | status=BLOCKED | type=CPF
+2026-05-11T00:33:38Z | hook=pre-tool-pii-scan | tool=Write | path=src/empresa.ts | status=BLOCKED | type=CNPJ
+2026-05-11T00:33:38Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:33:39Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:33:39Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:33:39Z | hook=pre-tool-private-key-scan | tool=Write | path=src/key.pem | status=BLOCKED
+2026-05-11T00:33:39Z | hook=pre-tool-private-key-scan | tool=Write | path=src/wallet.json | status=BLOCKED
+2026-05-11T00:33:39Z | hook=pre-tool-private-key-scan | tool=Write | path=src/eth.ts | status=BLOCKED
+2026-05-11T00:33:41Z | hook=pre-tool-pii-scan | tool=Write | path=src/cliente.ts | status=BLOCKED | type=CPF
+2026-05-11T00:33:41Z | hook=pre-tool-pii-scan | tool=Write | path=src/empresa.ts | status=BLOCKED | type=CNPJ
+2026-05-11T00:33:41Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:33:41Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:33:41Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:33:41Z | hook=pre-tool-private-key-scan | tool=Write | path=src/key.pem | status=BLOCKED
+2026-05-11T00:33:41Z | hook=pre-tool-private-key-scan | tool=Write | path=src/wallet.json | status=BLOCKED
+2026-05-11T00:33:41Z | hook=pre-tool-private-key-scan | tool=Write | path=src/eth.ts | status=BLOCKED
+2026-05-11T00:33:43Z | hook=pre-tool-pii-scan | tool=Write | path=src/cliente.ts | status=BLOCKED | type=CPF
+2026-05-11T00:33:44Z | hook=pre-tool-pii-scan | tool=Write | path=src/empresa.ts | status=BLOCKED | type=CNPJ
+2026-05-11T00:33:44Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:33:44Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:33:44Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:33:44Z | hook=pre-tool-private-key-scan | tool=Write | path=src/key.pem | status=BLOCKED
+2026-05-11T00:33:44Z | hook=pre-tool-private-key-scan | tool=Write | path=src/wallet.json | status=BLOCKED
+2026-05-11T00:33:44Z | hook=pre-tool-private-key-scan | tool=Write | path=src/eth.ts | status=BLOCKED
+2026-05-11T00:33:46Z | hook=pre-tool-pii-scan | tool=Write | path=src/cliente.ts | status=BLOCKED | type=CPF
+2026-05-11T00:33:46Z | hook=pre-tool-pii-scan | tool=Write | path=src/empresa.ts | status=BLOCKED | type=CNPJ
+2026-05-11T00:33:46Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:33:46Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:33:46Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:33:46Z | hook=pre-tool-private-key-scan | tool=Write | path=src/key.pem | status=BLOCKED
+2026-05-11T00:33:46Z | hook=pre-tool-private-key-scan | tool=Write | path=src/wallet.json | status=BLOCKED
+2026-05-11T00:33:46Z | hook=pre-tool-private-key-scan | tool=Write | path=src/eth.ts | status=BLOCKED
+2026-05-11T00:33:49Z | hook=pre-tool-pii-scan | tool=Write | path=src/cliente.ts | status=BLOCKED | type=CPF
+2026-05-11T00:33:49Z | hook=pre-tool-pii-scan | tool=Write | path=src/empresa.ts | status=BLOCKED | type=CNPJ
+2026-05-11T00:33:49Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:33:49Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:33:49Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:33:49Z | hook=pre-tool-private-key-scan | tool=Write | path=src/key.pem | status=BLOCKED
+2026-05-11T00:33:49Z | hook=pre-tool-private-key-scan | tool=Write | path=src/wallet.json | status=BLOCKED
+2026-05-11T00:33:49Z | hook=pre-tool-private-key-scan | tool=Write | path=src/eth.ts | status=BLOCKED
+2026-05-11T00:34:03Z | hook=pre-tool-pii-scan | tool=Write | path=src/cliente.ts | status=BLOCKED | type=CPF
+2026-05-11T00:34:03Z | hook=pre-tool-pii-scan | tool=Write | path=src/empresa.ts | status=BLOCKED | type=CNPJ
+2026-05-11T00:34:03Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:34:03Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:34:03Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:34:03Z | hook=pre-tool-private-key-scan | tool=Write | path=src/key.pem | status=BLOCKED
+2026-05-11T00:34:03Z | hook=pre-tool-private-key-scan | tool=Write | path=src/wallet.json | status=BLOCKED
+2026-05-11T00:34:03Z | hook=pre-tool-private-key-scan | tool=Write | path=src/eth.ts | status=BLOCKED
+2026-05-11T00:34:05Z | hook=pre-tool-pii-scan | tool=Write | path=src/cliente.ts | status=BLOCKED | type=CPF
+2026-05-11T00:34:05Z | hook=pre-tool-pii-scan | tool=Write | path=src/empresa.ts | status=BLOCKED | type=CNPJ
+2026-05-11T00:34:05Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:34:05Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:34:05Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:34:05Z | hook=pre-tool-private-key-scan | tool=Write | path=src/key.pem | status=BLOCKED
+2026-05-11T00:34:05Z | hook=pre-tool-private-key-scan | tool=Write | path=src/wallet.json | status=BLOCKED
+2026-05-11T00:34:06Z | hook=pre-tool-private-key-scan | tool=Write | path=src/eth.ts | status=BLOCKED
+2026-05-11T00:34:08Z | hook=pre-tool-pii-scan | tool=Write | path=src/cliente.ts | status=BLOCKED | type=CPF
+2026-05-11T00:34:08Z | hook=pre-tool-pii-scan | tool=Write | path=src/empresa.ts | status=BLOCKED | type=CNPJ
+2026-05-11T00:34:08Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:34:08Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:34:08Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:34:08Z | hook=pre-tool-private-key-scan | tool=Write | path=src/key.pem | status=BLOCKED
+2026-05-11T00:34:08Z | hook=pre-tool-private-key-scan | tool=Write | path=src/wallet.json | status=BLOCKED
+2026-05-11T00:34:08Z | hook=pre-tool-private-key-scan | tool=Write | path=src/eth.ts | status=BLOCKED
+2026-05-11T00:34:10Z | hook=pre-tool-pii-scan | tool=Write | path=src/cliente.ts | status=BLOCKED | type=CPF
+2026-05-11T00:34:10Z | hook=pre-tool-pii-scan | tool=Write | path=src/empresa.ts | status=BLOCKED | type=CNPJ
+2026-05-11T00:34:10Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:34:10Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:34:10Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:34:10Z | hook=pre-tool-private-key-scan | tool=Write | path=src/key.pem | status=BLOCKED
+2026-05-11T00:34:10Z | hook=pre-tool-private-key-scan | tool=Write | path=src/wallet.json | status=BLOCKED
+2026-05-11T00:34:10Z | hook=pre-tool-private-key-scan | tool=Write | path=src/eth.ts | status=BLOCKED
+2026-05-11T00:34:12Z | hook=pre-tool-pii-scan | tool=Write | path=src/cliente.ts | status=BLOCKED | type=CPF
+2026-05-11T00:34:12Z | hook=pre-tool-pii-scan | tool=Write | path=src/empresa.ts | status=BLOCKED | type=CNPJ
+2026-05-11T00:34:13Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:34:13Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:34:13Z | hook=pre-tool-pii-scan | tool=Write | path=src/pagamento.ts | status=BLOCKED | type=CARD
+2026-05-11T00:34:13Z | hook=pre-tool-private-key-scan | tool=Write | path=src/key.pem | status=BLOCKED
+2026-05-11T00:34:13Z | hook=pre-tool-private-key-scan | tool=Write | path=src/wallet.json | status=BLOCKED
+2026-05-11T00:34:13Z | hook=pre-tool-private-key-scan | tool=Write | path=src/eth.ts | status=BLOCKED

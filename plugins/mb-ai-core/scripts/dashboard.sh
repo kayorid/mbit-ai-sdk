@@ -37,11 +37,26 @@ if [[ -f .mb/audit/hook-fires.log ]]; then
 fi
 
 # Achievements
-ACH_TOTAL=12
+ACH_TOTAL=16
 ACH_UNLOCKED=0
 if [[ -f .mb/achievements.json ]] && command -v jq >/dev/null 2>&1; then
   ACH_UNLOCKED=$(jq -r '.unlocked | length' .mb/achievements.json 2>/dev/null || echo 0)
 fi
+
+# mb-evals: contagem de evals + última run
+EVALS_COUNT=$(find evals -mindepth 1 -maxdepth 1 -type d 2>/dev/null | wc -l | tr -d ' ')
+EVALS_RUNS=$(find evals -path '*/runs/*.jsonl' 2>/dev/null | wc -l | tr -d ' ')
+
+# mb-cost: custo do mês corrente (última linha summary se houver)
+COST_MONTH="—"
+if [[ -f .mb/audit/cost.log ]]; then
+  COST_LINES=$(wc -l < .mb/audit/cost.log | tr -d ' ')
+  COST_MONTH="${COST_LINES} eventos"
+fi
+
+# Modo /mb-fast
+FAST="—"
+[[ -f .mb/config.yaml ]] && grep -q 'modes_unlocked.*fast' .mb/config.yaml 2>/dev/null && FAST="✓ destravado"
 
 # Maturidade — função de archived + promoted + champion-time (heurística simples)
 MATURITY=0
@@ -113,7 +128,10 @@ ${P}│${R}  ${I}Aprovações registradas:${R}  ${B}${APPROVALS}${R}
 ${P}│${R}  ${I}Exceções abertas:${R}        ${B}${EXCEPTIONS}${R}
 ${P}│${R}
 ${P}│${R}  ${I}Maturidade:${R}    ${A}${BAR}${R}  ${B}${MATURITY}%${R}
-${P}│${R}  ${I}Achievements:${R}  ${B}${ACH_UNLOCKED}/${ACH_TOTAL}${R}
+${P}│${R}  ${I}Achievements:${R}  ${B}${ACH_UNLOCKED}/${ACH_TOTAL}${R}      ${I}Modo /mb-fast:${R} ${B}${FAST}${R}
+${P}│${R}
+${P}│${R}  ${I}Evals configurados:${R}    ${B}${EVALS_COUNT}${R}        ${I}Eval runs total:${R}     ${B}${EVALS_RUNS}${R}
+${P}│${R}  ${I}Custo IA (eventos):${R}    ${B}${COST_MONTH}${R}
 ${P}│${R}
 ${P}│${R}  ${S}▸${R} ${B}Próxima ação:${R}  ${NEXT}
 ${P}└──────────────────────────────────────────────────────────${R}

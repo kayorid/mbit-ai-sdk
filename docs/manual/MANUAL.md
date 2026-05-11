@@ -794,4 +794,84 @@ Tendência emergente: cada critério EARS é também um caso de teste executáve
 
 ---
 
+## 12. Adendos v0.2 e v0.3
+
+### 12.1 Plugin `mb-cost` (v0.2.0)
+
+Captura uso de tokens via hook `PostToolUse` com curto-circuito antes de jq se payload sem `usage` (otimização B-4). Persiste em `.mb/audit/cost.log` com snapshot de preço (M-5) para auditoria contábil. Comandos: `/mb-cost`, `/mb-cost-feature`, `/mb-cost-budget`, `/mb-cost-alert`.
+
+**Limitação conhecida:** Claude Code raramente coloca `usage` em payloads de tool individuais — tokens vêm no nível de mensagem do agente. Capture real é parcial. Em v1.0+, planejado mover para hook `Stop` ou `SessionEnd` lendo transcript.
+
+### 12.2 Achievement system (v0.2.0)
+
+12 conquistas catalogadas em `plugins/mb-ai-core/achievements/definitions.json`. Checker (`achievements/checker.sh`) avalia métricas do squad e atualiza `.mb/achievements.json`. Notify hook (`achievements/notify.sh`) plugado em Stop dispara banner celebrativo ao desbloquear.
+
+### 12.3 Identidade visual MBit (v0.2.0)
+
+- Paleta laranja MB oficial `#E8550C` em truecolor (`\033[38;2;232;85;12m`).
+- 8 ASCII arts hexagonais (welcome, bootstrap-done, spec-start, ship, hotfix, retro, mature-squad, hexagon-logo) com FIGlet ANSI Shadow para "MBit".
+- 4 temas configuráveis via `.mb/config.yaml` ou `MB_THEME`: `default`, `festive`, `compact`, `accessible`, `none`.
+- Statusline auto-detect de largura (M-2): formato completo se ≥100 cols, compacto 80-100, mínimo <80.
+- SessionStart hook envia banner colorido ao stderr (terminal) e versão plain ao `additionalContext` (LLM input — economia ~150 tokens/sessão, M-8).
+
+### 12.4 Plugin `mb-evals` (v0.3.0)
+
+Eval framework para features que **usam** IA em runtime. Estrutura por feature em `evals/<feature>/`:
+- `dataset.jsonl` — golden examples
+- `rubric.md` — critérios (determinística + LLM-as-judge + custom)
+- `runner.sh` — chama sistema sob teste
+- `threshold.yaml` — passing/failing scores
+- `runs/` — histórico timestampado
+
+Comandos: `/mb-evals-init`, `/mb-evals-run`, `/mb-evals-compare` (A/B), `/mb-evals-ci` (exit 0/1).
+
+**Integração com mb-sdd:** fase VERIFY do ciclo SDD agora invoca `/mb-evals-ci` automaticamente para features AI. Score abaixo do threshold bloqueia VERIFY.
+
+### 12.5 Comandos de produtividade (v0.2-v0.3)
+
+- `/mb-init` — wizard de primeira instalação que configura `~/.claude/settings.json` com 9 plugins.
+- `/mb-doctor` — diagnóstico estilo `brew doctor` com 7 seções de health check coloridas.
+- `/mb-snapshot` — backup tar.gz reversível de `.mb/` e specs ativas; auto-snapshot em `mb-bootstrap-rescan`.
+- `/mb-dashboard` — painel ASCII com sparklines de ciclos, maturidade, achievements, próxima ação contextual.
+- `/mb-tutorial` — sandbox `~/.mb/tutorial-sandbox/` com repositório fictício "MBExchangeMini" + roteiro 45-60min.
+- `/mb-update` — verifica e aplica atualizações via `git -C` (não muda cwd) com comparação semver via `sort -V` e validação de remote semver.
+- `/mb-fast` — destrava modo expresso após critérios de maturidade (3+ ciclos, 0 exceções, 2+ promotions, 5+ achievements).
+- `/mb-theme set/show` — gerência do tema visual.
+- `/mb-search <termo>` — busca grep estruturada em specs com excerpt.
+- `/mb-new-skill <slug>` — scaffolder rápido de skill custom.
+- `/mb-retro-digest [N]` — resumo das últimas N retros.
+- `/mb-version` — mostra versões instaladas dos 9 plugins.
+- `/mb-list-plugins` — lista plugins ativados no settings.
+
+### 12.6 Suite de smoke tests
+
+`tests/smoke/run.sh` valida ~95+ itens em segundos:
+- Estrutura repo + manifestos JSON
+- Sincronização de versões (regressão B-1)
+- Scripts shell (sintaxe + executáveis)
+- Skills frontmatter, comandos
+- Execução real de hooks com payloads positivos E negativos:
+  - secret-scan: AWS, GitHub PAT, RSA inline (bloqueia); payload limpo (permite)
+  - destructive-confirm: `rm -rf`, `--force`, `DROP` (bloqueia); `git status`, `--force-with-lease`, `MB_CONFIRMED` (permite)
+  - pii-scan: CPF, CNPJ, **Visa/MC/Amex** (regressão B-3); placeholder, `_test` (permite)
+  - private-key-scan: PEM, BIP-32 xprv, **Ethereum hex+keyword** (regressão B-3), BIP-39 mnemonic
+- cost-report execução em day/week/month (regressão B-2)
+- cost-capture overhead <200ms quando sem usage (regressão B-4)
+- mb-evals scripts executam (regressão de v0.3)
+- ASCII art completa, documentação completa, integrações presentes
+
+CI próprio (`.github/workflows/sdk-ci.yml`) roda em todo PR ao `mbit-ai-sdk`.
+
+### 12.7 Governança open-source (v0.3.0)
+
+- `CONTRIBUTING.md` — modelo, padrão de commits, convenção de branch, plugin structure, code shell, skills, comandos, versionamento.
+- `SECURITY.md` — canal privado de reporte, SLAs por severidade.
+- `.github/ISSUE_TEMPLATE/{bug,proposal,security}.md` + `PULL_REQUEST_TEMPLATE.md`.
+- `docs/MIGRATION.md` — guia entre versões.
+- `docs/PLUGIN-DEVELOPMENT.md` — guia completo para criar plugins novos.
+
+---
+
 **Fim do manual. Para dúvidas, abra issue ou contate Chapter AI.**
+
+**Versão:** 0.3.1 · **Última atualização:** 2026-05-10 · **Mantido por:** Chapter AI · Mercado Bitcoin · ⬡

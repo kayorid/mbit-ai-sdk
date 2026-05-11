@@ -117,28 +117,30 @@ Cada slide tem: **Conteúdo visual sugerido** + **Falas-chave** + **Tempo** + **
 >
 > "**Plugin obrigatório:** `mb-ai-core` carrega constitution, hooks bloqueantes de segurança, allowlist de MCPs. Todo squad usando IA carrega isso."
 >
-> "**Plugins opt-in:** `mb-bootstrap`, `mb-sdd`, `mb-review`, `mb-observability`, `mb-security`, `mb-retro`. Cada squad escolhe o que faz sentido. Alguns são exigidos por contexto — `mb-security` para qualquer feature tocando ativo crítico."
+> "**Plugins opt-in:** `mb-bootstrap`, `mb-sdd`, `mb-review`, `mb-observability`, `mb-security`, `mb-retro`, `mb-cost`, `mb-evals`. Cada squad escolhe o que faz sentido. Alguns são exigidos por contexto — `mb-security` para qualquer feature tocando ativo crítico, `mb-evals` para features que usam IA em runtime."
 >
 > "**Contexto do squad:** uma pasta `.mb/` no repo, gerada pelo `mb-bootstrap`, com CLAUDE.md, glossário, runbooks, skills e hooks específicos do squad. Stack-specific — porque o SDK não é."
 
 ---
 
-## Slide 7 — Os 7 plugins, em uma página (3 min)
+## Slide 7 — Os 9 plugins, em uma página (3 min)
 
 **Visual:** tabela com nome, propósito, status (obrigatório/opt-in).
 
 | Plugin | Propósito | Status |
 |--------|-----------|--------|
-| **mb-ai-core** | Constitution, hooks, MCPs, comandos base | Obrigatório |
+| **mb-ai-core** | Constitution, hooks, MCPs, achievements, doctor, dashboard | Obrigatório |
 | **mb-bootstrap** | Onboarding híbrido do squad | Recomendado |
 | **mb-sdd** | Ciclo Spec-Driven rígido com checkpoints | Recomendado |
 | **mb-review** | Code/security/spec review formais | Opt-in |
 | **mb-observability** | Design e revisão de observabilidade | Opt-in |
 | **mb-security** | Threat modeling, compliance, cripto | Obrigatório se ativo crítico |
 | **mb-retro** | Retros estruturadas e memória organizacional | Opt-in |
+| **mb-cost** | Captura de tokens, custo por fase/feature, alertas de budget | Recomendado |
+| **mb-evals** | Eval framework para features que usam IA em runtime | Obrigatório se feature AI |
 
 **Falas-chave:**
-> "Sete plugins, cada um com responsabilidade clara. Não vou entrar em cada um agora — mas destaco que todos compartilham convenções: prefixo `mb-`, pasta `.mb/`, comandos `/mb-*`, audit trail em `.mb/audit/`."
+> "Nove plugins, cada um com responsabilidade clara. Todos compartilham convenções: prefixo `mb-`, pasta `.mb/`, comandos `/mb-*`, audit trail em `.mb/audit/`. Os dois últimos — mb-cost e mb-evals — endereçam dimensões cruciais: custo de IA é decisão de engenharia, e features que usam IA em runtime exigem framework de avaliação para evitar regressão silenciosa."
 
 ---
 

@@ -1,7 +1,7 @@
 {
   "name": "mb-evals",
   "description": "MBit — eval framework para features que usam IA em runtime. Datasets golden, rubricas (determinística + LLM-as-judge + custom), runners, comparação A/B de prompts e modelos, integração CI.",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "author": {
     "name": "Chapter AI - Mercado Bitcoin",
     "email": "chapter-ai@mercadobitcoin.com.br"
