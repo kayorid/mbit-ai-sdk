@@ -1,10 +1,10 @@
-# Handoff — MBit v0.3.1
+# Handoff — MBit v1.0.0
 
 > Documento de retomada. Lê este antes de continuar a evolução do MBit em sessão futura.
 
-**Data deste handoff:** 2026-05-10
-**Versão atual:** v0.3.1 (tag `v0.3.1` no repo)
-**Estado:** ✅ Production-ready · Working tree limpo · 5x validações verde
+**Data deste handoff:** 2026-05-11
+**Versão atual:** v1.0.0 (tag `v1.0.0` no repo)
+**Estado:** ✅ Production-ready corporativo · Working tree limpo · todas as suites verdes
 
 ---
 
@@ -13,19 +13,27 @@
 ### Repositório
 - **GitHub:** https://github.com/kayorid/mbit-ai-sdk
 - **Branch principal:** `main`
-- **Último commit:** `a4bc5e5` — fix: MBit v0.3.1
-- **Tags:** `v0.3.0`, `v0.3.1`
-- **Releases:** ambas publicadas com release notes
+- **Último commit:** `89ab17e` — feat: MBit v1.0.0 — maturidade pedagógica
+- **Tags:** `v0.3.0`, `v0.3.1`, `v0.3.2`, `v0.5.0`, `v1.0.0`
+- **Releases:** todas publicadas com release notes em CHANGELOG.md
 
 ### Local
 - **Path:** `/Users/kayoridolfi/Documents/vibecoding/plugin-mb-ai`
 - **Remote origin:** https://github.com/kayorid/mbit-ai-sdk.git
-- **Remote backup:** `old-spec-driven` → repositório anterior preservado
 
-### Estatísticas
-- 9 plugins · 14 skills · 58 comandos · 11 hooks · 30 scripts · 16 achievements · 8 ASCII arts · 15 docs
-- 154 itens validados pelo completeness-check
-- 90 smoke tests (incluindo execução real de hooks)
+### Estatísticas (v1.0.0)
+- 9 plugins · 14+ skills · 60+ comandos · 10 hooks · 33 scripts · 16 achievements · 18+ docs
+- **3 integrações reais**: Slack (Bolt JS), Jira (adapter shell), PagerDuty (webhook Node)
+- **166 itens** validados pelo completeness-check
+- **120 smoke tests** (execução real de hooks + integrações + comandos novos)
+- **11 testes E2E** num sandbox temporário (`tests/e2e/run.sh`)
+- **5 testes node:test** (4 slack + 1 pagerduty)
+
+### Specs entregues
+Todas em `docs/specs/_completed/`:
+- `v0.3.2-cleanup/` — M-1 (consolidação de hooks) + suite E2E
+- `v0.5-community/` — leaderboard, newsletter, AI Champions charter, AI Lab playbook
+- `v1.0-maturity/` — Slack bot, Jira adapter, PagerDuty webhook, adoption report, certificação
 
 ---
 
@@ -60,34 +68,14 @@ bash plugins/mb-ai-core/scripts/version.sh
 
 ## 🚀 Próxima evolução planejada
 
-### v0.5 — Comunidade & Workshops (Sem 10-13)
+### ✅ v0.3.2, v0.5.0, v1.0.0 — entregues em 2026-05-11
 
-Ver detalhes em [`docs/plans/2026-05-10-evolution-roadmap.md`](docs/plans/2026-05-10-evolution-roadmap.md) §D.2 e §D.5.
+Specs completas em `docs/specs/_completed/`. Resumo:
+- **v0.3.2** — M-1 consolidação de hooks + suite E2E + fix achievements unbound var
+- **v0.5.0** — `/mb-leaderboard`, `/mb-newsletter`, charter AI Champions, AI Lab (6 trilhas), opt-in guide
+- **v1.0.0** — Slack bot Bolt JS, Jira adapter, PagerDuty webhook, `/mb-adoption-report`, certificação Champion 4 níveis
 
-**Itens:**
-- Comunidade mensal de AI Champions formalizada
-- "MB AI Lab" — workshop quinzenal hands-on
-- Newsletter automática gerada por `/mb-retro-quarterly`
-- Leaderboard saudável (`/mb-leaderboard`)
-- Refinamento dos plugins opt-in com feedback dos squads piloto
-
-**MEDIUMs ainda em aberto** (do REVIEW.md original):
-- M-1 consolidar Write|Edit hooks (atualmente documentado como overhead intencional)
-- M-2 statusline narrow já implementado em v0.3
-- M-5 cost-capture já snapshota preço em v0.3
-- M-6 dashboard cd skip — verificar
-- M-8 ANSI separado já implementado
-- M-10 ReDoS mitigado com `head -c 100k` em v0.2
-
-### v1.0 — Maturidade pedagógica (Sem 14-18)
-
-- Slack bot **real** (atualmente é só manifest stub)
-- Jira/Linear → spec via `/mb-spec-from-ticket`
-- PagerDuty → runbook automático
-- Dashboard de adoção corporativa
-- Programa formal de AI Champion certification (ver §D.1)
-
-### v1.5 — Inteligência operacional (Sem 19-25)
+### v1.5 — Inteligência operacional (próximo ciclo)
 
 - `mb-knowledge-graph` — grafo de decisões cross-squad
 - `mb-search` semântico (embeddings + sqlite-vec)
