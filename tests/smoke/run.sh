@@ -391,6 +391,44 @@ section "Integrações"
 [[ -f integrations/slack/manifest.yaml ]] && t_pass "Slack manifest presente" || t_warn "Slack manifest ausente" ""
 
 # ============================================================
+section "pre-write-guard consolidado (v0.3.2 / M-1)"
+# ============================================================
+
+if [[ $HAVE_JQ -eq 1 ]]; then
+  HOOK_GUARD="plugins/mb-security/hooks/scripts/pre-write-guard.sh"
+
+  if [[ -x "$HOOK_GUARD" ]]; then
+    t_pass "pre-write-guard.sh existe e é executável"
+
+    assert_block "pre-write-guard: bloqueia AWS key via secret-scan delegado" "$HOOK_GUARD" \
+      '{"tool_name":"Write","tool_input":{"file_path":"src/config.ts","content":"K=AKIAIOSFODNN7EXAMPLE"}}'
+
+    assert_block "pre-write-guard: bloqueia CPF via pii-scan delegado" "$HOOK_GUARD" \
+      '{"tool_name":"Write","tool_input":{"file_path":"src/cliente.ts","content":"const cpf=\"123.456.789-00\";"}}'
+
+    assert_block "pre-write-guard: bloqueia chave privada via private-key-scan delegado" "$HOOK_GUARD" \
+      '{"tool_name":"Write","tool_input":{"file_path":"src/key.pem","content":"-----BEGIN RSA PRIVATE KEY-----\nMIIE..."}}'
+
+    assert_allow "pre-write-guard: permite payload limpo" "$HOOK_GUARD" \
+      '{"tool_name":"Write","tool_input":{"file_path":"src/hello.ts","content":"const N=\"world\";"}}'
+
+    # M-1: hooks.json de mb-security deve ter apenas 1 entrada Write|Edit
+    HSEC="plugins/mb-security/hooks/hooks.json"
+    ENTRIES=$(jq '.hooks.PreToolUse[0].hooks | length' "$HSEC")
+    [[ "$ENTRIES" == "1" ]] && t_pass "mb-security hooks.json consolidado (1 entrada Write|Edit)" \
+      || t_fail "mb-security hooks.json não consolidado" "esperado 1, achou $ENTRIES"
+
+    # mb-ai-core não deve mais ter Write|Edit em PreToolUse
+    HCORE="plugins/mb-ai-core/hooks/hooks.json"
+    CORE_WE=$(jq '[.hooks.PreToolUse[]? | select(.matcher == "Write|Edit")] | length' "$HCORE")
+    [[ "$CORE_WE" == "0" ]] && t_pass "mb-ai-core hooks.json sem Write|Edit (dedup M-1)" \
+      || t_fail "mb-ai-core ainda tem Write|Edit" "achou $CORE_WE entradas"
+  else
+    t_fail "pre-write-guard.sh ausente ou não executável" "$HOOK_GUARD"
+  fi
+fi
+
+# ============================================================
 section "Hook references — scripts existem"
 # ============================================================
 

@@ -4,6 +4,20 @@ Todas as mudanças notáveis no MBit (MB AI SDK) serão documentadas aqui.
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/), versionamento semântico.
 
+## [0.3.2] — 2026-05-11
+
+### Corrigido
+- **M-1 (REVIEW)** Hooks `PreToolUse Write|Edit` consolidados em **um único** `pre-write-guard.sh` em `mb-security`, que despacha para `pii-scan`, `private-key-scan` e `secret-scan` lendo o payload uma única vez. Reduz overhead de ~3 invocações shell separadas para 1.
+- **mb-ai-core/hooks.json** deixa de interceptar `Write|Edit` (dedup); `secret-scan.sh` permanece neste plugin como referência standalone para debug.
+- **achievements/checker.sh** corrige `unbound variable` quando array `unlocked_now` está vazio (regressão silenciosa que falhava em primeiro uso).
+
+### Adicionado
+- **`tests/e2e/run.sh`** — suite end-to-end nova: cria sandbox temporário, valida bootstrap, hooks reais contra payloads JSON, ciclo SDD (requirements/design/tasks), achievements checker + cache, banner SessionStart sem ANSI. 11 verificações em <5s.
+- **Smoke suite** +7 testes para `pre-write-guard` e validação estrutural dos hooks consolidados (97 OK total, era 90).
+
+### Planejamento
+- **Specs SDD criadas** em `docs/specs/_active/` para v0.3.2, v0.5 e v1.0 — requirements + design + tasks completos.
+
 ## [0.3.1] — 2026-05-10
 
 ### Corrigido

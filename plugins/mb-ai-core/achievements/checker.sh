@@ -159,7 +159,7 @@ if command -v jq >/dev/null 2>&1; then
     crit=$(jq -r ".achievements[$i].criteria" "$DEF_FILE")
     # já desbloqueado?
     skip=0
-    for u in "${unlocked_now[@]}"; do
+    for u in ${unlocked_now[@]+"${unlocked_now[@]}"}; do
       [[ "$u" == "$id" ]] && skip=1 && break
     done
     [[ $skip -eq 1 ]] && continue

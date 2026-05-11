@@ -1,5 +1,5 @@
 {
-  "_comment": "M-1: Write|Edit também é interceptado por mb-ai-core/secret-scan.sh — overhead consciente (~3x). Cada hook tem responsabilidade distinta: secret-scan (segredos genéricos AWS/GitHub/JWT), pii-scan (PII brasileira CPF/CNPJ/cartão), private-key-scan (chaves criptográficas PEM/xprv/Ethereum/BIP-39). Consolidação em pre-write-guard.sh planejada para v0.5 (ver REVIEW.md M-1).",
+  "_comment": "v0.3.2 — hooks Write|Edit consolidados em pre-write-guard.sh (M-1 do REVIEW.md). Substitui as entradas separadas, lendo o payload PreToolUse uma única vez e despachando para pii-scan + private-key-scan + secret-scan internamente. Cada scanner permanece executável standalone para debug.",
   "hooks": {
     "PreToolUse": [
       {
@@ -7,11 +7,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/pii-scan.sh"
-          },
-          {
-            "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/private-key-scan.sh"
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/pre-write-guard.sh"
           }
         ]
       }

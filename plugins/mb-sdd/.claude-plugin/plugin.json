@@ -1,7 +1,7 @@
 {
   "name": "mb-sdd",
   "description": "MB AI SDK — ciclo Spec-Driven Development rígido com checkpoints obrigatórios, audit-trail e integração com o ecossistema MB",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "author": {
     "name": "Chapter AI - Mercado Bitcoin",
     "email": "chapter-ai@mercadobitcoin.com.br"
