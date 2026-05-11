@@ -53,6 +53,19 @@ if [[ -f .mb/audit/hook-fires.log ]]; then
   BLOCKS=$(grep -c "^${TODAY}.*BLOCKED" .mb/audit/hook-fires.log 2>/dev/null || echo 0)
 fi
 
-# Formato compacto
-printf "${C_GOLD}◆ MB${C_RESET} ${C_DIM}│${C_RESET} ${C_CYAN}%s${C_RESET} ${C_DIM}│${C_RESET} ${C_DIM}boot${C_RESET} %s ${C_DIM}│${C_RESET} ${C_DIM}specs${C_RESET} %d ${C_DIM}│${C_RESET} ${C_ORANGE}%s${C_RESET} ${C_DIM}│${C_RESET} ${C_DIM}🛡${C_RESET} %d ${C_DIM}│${C_RESET} ${C_DIM}%s${C_RESET}" \
-  "$SQUAD" "$BOOT" "$ACTIVE" "$PHASE" "$BLOCKS" "$MODEL"
+# M-2: detecta largura do terminal e usa formato compacto se < 100 cols
+COLS=$(echo "$INPUT" | jq -r '.workspace.columns // .terminal.columns // 120' 2>/dev/null || echo 120)
+[[ ! "$COLS" =~ ^[0-9]+$ ]] && COLS=120
+
+if [[ $COLS -lt 80 ]]; then
+  # Mínimo: só MB + fase + blocks
+  printf "${C_GOLD}◆ MB${C_RESET} ${C_DIM}·${C_RESET} ${C_ORANGE}%s${C_RESET} ${C_DIM}·${C_RESET} ${C_DIM}🛡 %d${C_RESET}" "$PHASE" "$BLOCKS"
+elif [[ $COLS -lt 100 ]]; then
+  # Compacto: sem nome de model
+  printf "${C_GOLD}◆ MB${C_RESET} ${C_DIM}·${C_RESET} ${C_CYAN}%s${C_RESET} ${C_DIM}·${C_RESET} %s ${C_DIM}·${C_RESET} %d ${C_DIM}·${C_RESET} ${C_ORANGE}%s${C_RESET} ${C_DIM}·${C_RESET} 🛡 %d" \
+    "$SQUAD" "$BOOT" "$ACTIVE" "$PHASE" "$BLOCKS"
+else
+  # Formato completo
+  printf "${C_GOLD}◆ MB${C_RESET} ${C_DIM}│${C_RESET} ${C_CYAN}%s${C_RESET} ${C_DIM}│${C_RESET} ${C_DIM}boot${C_RESET} %s ${C_DIM}│${C_RESET} ${C_DIM}specs${C_RESET} %d ${C_DIM}│${C_RESET} ${C_ORANGE}%s${C_RESET} ${C_DIM}│${C_RESET} ${C_DIM}🛡${C_RESET} %d ${C_DIM}│${C_RESET} ${C_DIM}%s${C_RESET}" \
+    "$SQUAD" "$BOOT" "$ACTIVE" "$PHASE" "$BLOCKS" "$MODEL"
+fi

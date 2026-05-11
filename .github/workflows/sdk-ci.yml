@@ -1,0 +1,74 @@
+# MBit SDK · CI interno
+# Roda smoke test suite a cada PR ao próprio repo mbit-ai-sdk.
+
+name: MBit SDK · CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  smoke-tests:
+    name: Smoke test suite (87+ verificações)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install jq
+        run: sudo apt-get install -y jq
+      - name: Make scripts executable
+        run: |
+          chmod +x tests/smoke/run.sh
+          find plugins -name '*.sh' -exec chmod +x {} \;
+      - name: Run smoke tests
+        run: bash tests/smoke/run.sh
+
+  manifest-validation:
+    name: Validar manifestos JSON e shell syntax
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validar JSON
+        run: |
+          set -e
+          for f in $(find . -name 'plugin.json' -o -name 'marketplace.json' -o -name 'hooks.json' -o -name 'mcp-allowlist.json' -o -name 'definitions.json'); do
+            jq empty "$f" || { echo "::error::JSON inválido: $f"; exit 1; }
+          done
+          echo "✓ Todos os manifestos JSON são válidos"
+      - name: Validar shell syntax
+        run: |
+          set -e
+          for s in $(find . -name '*.sh'); do
+            bash -n "$s" || { echo "::error::Sintaxe inválida: $s"; exit 1; }
+          done
+          echo "✓ Todos os scripts shell têm sintaxe válida"
+      - name: ShellCheck
+        uses: ludeeus/action-shellcheck@master
+        with:
+          severity: error
+          ignore_paths: tests
+        continue-on-error: true
+
+  version-sync:
+    name: Sincronização de versões
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verificar marketplace == plugin.json
+        run: |
+          set -e
+          sudo apt-get install -y jq -qq
+          while IFS= read -r entry; do
+            NAME=$(echo "$entry" | jq -r '.name')
+            MARKET_VER=$(echo "$entry" | jq -r '.version')
+            PLUGIN_FILE="plugins/${NAME}/.claude-plugin/plugin.json"
+            if [[ -f "$PLUGIN_FILE" ]]; then
+              PLUGIN_VER=$(jq -r '.version' "$PLUGIN_FILE")
+              if [[ "$MARKET_VER" != "$PLUGIN_VER" ]]; then
+                echo "::error::$NAME: marketplace=$MARKET_VER vs plugin.json=$PLUGIN_VER"
+                exit 1
+              fi
+            fi
+          done < <(jq -c '.plugins[]' .claude-plugin/marketplace.json)
+          echo "✓ Todas as versões sincronizadas"

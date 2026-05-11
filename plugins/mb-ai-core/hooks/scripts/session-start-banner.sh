@@ -72,11 +72,23 @@ $([[ "$BOOTSTRAPPED" == "✗" ]] && echo "${C_GREEN}▸${C_RESET} ${C_BOLD}/mb-b
 EOF
 )
 
-# SessionStart hook deve emitir JSON com additionalContext
-# para que o conteúdo apareça no início da conversa.
-jq -n --arg ctx "$OUT" '{
-  "hookSpecificOutput": {
-    "hookEventName": "SessionStart",
-    "additionalContext": $ctx
-  }
-}'
+# M-8: dois canais separados
+# 1. Visual colorido vai para stderr (terminal vê)
+echo -e "$OUT" >&2
+
+# 2. Contexto plain (sem ANSI) vai para additionalContext do agente
+#    Economiza ~150 tokens por sessão evitando códigos de cor no prompt do LLM.
+PLAIN_CTX="MBit AI SDK ativo · Squad: ${SQUAD} · Bootstrap: ${BOOTSTRAPPED} · Specs ativas: ${ACTIVE_SPECS} · Fase atual: ${PHASE}
+
+Constitution corporativa MB carregada via mb-ai-core. Hooks bloqueantes ativos. Use /mb-help para visão geral, /mb-status para diagnóstico, /mb-doctor para health check.${NEW_ACHS:+
+
+Achievement(s) recentemente desbloqueado(s): ${NEW_ACHS}}"
+
+if command -v jq >/dev/null 2>&1; then
+  jq -n --arg ctx "$PLAIN_CTX" '{
+    "hookSpecificOutput": {
+      "hookEventName": "SessionStart",
+      "additionalContext": $ctx
+    }
+  }'
+fi

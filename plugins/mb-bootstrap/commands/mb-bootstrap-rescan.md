@@ -4,8 +4,14 @@ description: Reanalisa o repositório e propõe deltas para .mb/CLAUDE.md (uso a
 
 # /mb-bootstrap-rescan
 
-Reanalisa o repositório sem sobrescrever o `.mb/CLAUDE.md` existente. Comportamento:
+Reanalisa o repositório sem sobrescrever o `.mb/CLAUDE.md` existente.
 
+## Comportamento
+
+0. **Auto-snapshot antes de qualquer mudança:**
+   ```bash
+   bash "${CLAUDE_PLUGIN_ROOT}/../mb-ai-core/scripts/snapshot.sh" create pre-rescan
+   ```
 1. Rode `${CLAUDE_PLUGIN_ROOT}/skills/mb-bootstrap/scripts/repo-scan.sh` gerando nova `.mb/bootstrap/analysis.md`.
 2. **Compare** a análise nova com a anterior (se existir).
 3. Identifique deltas relevantes:
@@ -21,3 +27,5 @@ Reanalisa o repositório sem sobrescrever o `.mb/CLAUDE.md` existente. Comportam
    ```
 
 Use quando: refator grande, mudança de stack, novo serviço criado, ou trimestralmente como hygiene.
+
+Em caso de problema, restaure: `/mb-snapshot list` e `/mb-snapshot restore <name>`.

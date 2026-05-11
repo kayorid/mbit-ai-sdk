@@ -1,7 +1,7 @@
 {
   "name": "mb-ai-core",
   "description": "MB AI SDK — plugin obrigatório com constitution corporativa, hooks bloqueantes de segurança/compliance, MCP allowlist e comandos base",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": {
     "name": "Chapter AI - Mercado Bitcoin",
     "email": "chapter-ai@mercadobitcoin.com.br"

@@ -4,6 +4,30 @@ Todas as mudanças notáveis no MBit (MB AI SDK) serão documentadas aqui.
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/), versionamento semântico.
 
+## [0.3.0] — 2026-05-10
+
+### Adicionado
+- **Plugin novo `mb-evals@0.3.0`** — eval framework para features que usam IA em runtime. Datasets golden, rubricas (determinística + LLM-as-judge + custom), runners, A/B compare e modo CI. Comandos: `/mb-evals-init`, `/mb-evals-run`, `/mb-evals-compare`, `/mb-evals-ci`.
+- **`/mb-init`** — wizard interativo de primeira instalação que configura `~/.claude/settings.json` com marketplace MB e 9 plugins. Backup automático do settings anterior.
+- **`/mb-fast`** — modo expresso para squads maduros (3+ ciclos completos, 0 exceções, 2+ learnings promovidos, 5+ achievements). Verifica critérios e destrava automaticamente.
+- **`/mb-theme set/show`** — gerência do tema visual via `.mb/config.yaml` (default, festive, compact, accessible, none).
+- **`/mb-search <termo>`** — busca grep estruturada em specs ativas e arquivadas com excerpt. Versão semântica em v1.5.
+- **`/mb-new-skill <slug>`** — scaffolder de skill custom em `.mb/skills/mb-<slug>/` com SKILL.md + references + scripts + templates + atualização do índice.
+- **`/mb-retro-digest [N]`** — resumo curto das últimas N retrospectivas para captura rápida de tendências.
+- **Auto-snapshot** — `/mb-bootstrap-rescan` agora cria snapshot automático antes de modificar `.mb/`.
+- **CI próprio do repo** — `.github/workflows/sdk-ci.yml` rodando smoke tests, validação de manifestos JSON, sintaxe shell, ShellCheck e sincronização de versões em todo PR ao `mbit-ai-sdk`.
+- **Governança open-source** — `CONTRIBUTING.md`, `SECURITY.md`, issue templates (bug/proposal/security), PR template.
+- **`docs/MIGRATION.md`** — guia de migração entre versões.
+- **`docs/PLUGIN-DEVELOPMENT.md`** — guia completo para desenvolver plugins MBit.
+
+### Corrigido
+- **M-2 statusline para terminais estreitos** — auto-detecta largura via payload e usa formato compacto se <100 cols (mínimo se <80).
+- **M-8 ANSI no contexto do agente** — banner colorido vai apenas para stderr (terminal); `additionalContext` (LLM input) recebe versão plain. Economiza ~150 tokens/sessão.
+- **Auto-snapshot pré-rescan** — `mb-bootstrap-rescan` invoca `/mb-snapshot create pre-rescan` antes de operação destrutiva.
+
+### Bumpado
+- Todos os 9 plugins de `0.2.0` para `0.3.0` (sincronizado em marketplace + plugin.json).
+
 ## [0.2.0] — 2026-05-10
 
 ### Adicionado
