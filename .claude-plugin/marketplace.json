@@ -9,57 +9,57 @@
     {
       "name": "mb-ai-core",
       "description": "Obrigatório — constitution, hooks bloqueantes, MCP allowlist, comandos base, achievements, doctor, dashboard, snapshot",
-      "version": "0.3.2",
+      "version": "0.5.0",
       "source": "./plugins/mb-ai-core"
     },
     {
       "name": "mb-bootstrap",
       "description": "Onboarding híbrido de squad: análise automática + entrevista guiada + plano de enriquecimento",
-      "version": "0.3.2",
+      "version": "0.5.0",
       "source": "./plugins/mb-bootstrap"
     },
     {
       "name": "mb-sdd",
       "description": "Spec-Driven Development rígido com checkpoints obrigatórios e audit-trail",
-      "version": "0.3.2",
+      "version": "0.5.0",
       "source": "./plugins/mb-sdd"
     },
     {
       "name": "mb-review",
       "description": "Code review, security review e spec coverage como agentes formais",
-      "version": "0.3.2",
+      "version": "0.5.0",
       "source": "./plugins/mb-review"
     },
     {
       "name": "mb-observability",
       "description": "Design e revisão de observabilidade stack-agnostic (logs, métricas, traces, alertas, SLOs)",
-      "version": "0.3.2",
+      "version": "0.5.0",
       "source": "./plugins/mb-observability"
     },
     {
       "name": "mb-security",
       "description": "Threat modeling, compliance regulatório, padrões cripto e hooks bloqueantes específicos",
-      "version": "0.3.2",
+      "version": "0.5.0",
       "source": "./plugins/mb-security"
     },
     {
       "name": "mb-retro",
       "description": "Retrospectivas estruturadas, extração de learnings e memória organizacional",
-      "version": "0.3.2",
+      "version": "0.5.0",
       "source": "./plugins/mb-retro"
     },
     {
       "name": "mb-cost",
       "description": "Exposição de custo de IA — captura tokens, agrega por fase/feature/dia, alertas de budget",
-      "version": "0.3.2",
+      "version": "0.5.0",
       "source": "./plugins/mb-cost"
     },
     {
       "name": "mb-evals",
       "description": "Eval framework para features que usam IA em runtime — datasets golden, rubricas, runners, A/B compare, integração CI",
-      "version": "0.3.2",
+      "version": "0.5.0",
       "source": "./plugins/mb-evals"
     }
   ],
-  "version": "0.3.2"
+  "version": "0.5.0"
 }

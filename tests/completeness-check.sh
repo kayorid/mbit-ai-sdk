@@ -67,6 +67,7 @@ EXPECTED_CMDS=(
   # mb-retro
   "mb-retro/mb-retro" "mb-retro/mb-retro-promote" "mb-retro/mb-retro-extract-skill"
   "mb-retro/mb-retro-quarterly" "mb-retro/mb-retro-digest"
+  "mb-retro/mb-leaderboard" "mb-retro/mb-newsletter"
   # mb-cost
   "mb-cost/mb-cost" "mb-cost/mb-cost-feature" "mb-cost/mb-cost-budget" "mb-cost/mb-cost-alert"
   # mb-evals
@@ -169,6 +170,8 @@ EXPECTED_SCRIPTS=(
   "mb-evals/scripts/ci-eval.sh"
   "mb-evals/scripts/compare-eval.sh"
   "mb-retro/scripts/retro-digest.sh"
+  "mb-retro/scripts/leaderboard.sh"
+  "mb-retro/scripts/newsletter.sh"
 )
 for script in "${EXPECTED_SCRIPTS[@]}"; do
   if [[ -f "plugins/$script" && -x "plugins/$script" ]]; then
@@ -197,6 +200,9 @@ EXPECTED_DOCS=(
   "docs/MIGRATION.md"
   "docs/PLUGIN-DEVELOPMENT.md"
   "docs/faq.md"
+  "docs/governance/ai-champions.md"
+  "docs/playbooks/ai-lab.md"
+  "docs/plugins/opt-in-guide.md"
 )
 for doc in "${EXPECTED_DOCS[@]}"; do
   if [[ -f "$doc" ]]; then

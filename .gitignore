@@ -15,3 +15,5 @@ __pycache__/
 # Outputs de teste temporários
 /tmp-test/
 test-output.log
+docs/newsletter/*.md
+docs/newsletter/*.html

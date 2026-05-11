@@ -429,6 +429,45 @@ if [[ $HAVE_JQ -eq 1 ]]; then
 fi
 
 # ============================================================
+section "v0.5 — Comunidade & Workshops"
+# ============================================================
+
+LDR="plugins/mb-retro/scripts/leaderboard.sh"
+NWS="plugins/mb-retro/scripts/newsletter.sh"
+[[ -x "$LDR" ]] && t_pass "leaderboard.sh executável" || t_fail "leaderboard.sh ausente/não-executável" "$LDR"
+[[ -x "$NWS" ]] && t_pass "newsletter.sh executável" || t_fail "newsletter.sh ausente/não-executável" "$NWS"
+
+# Leaderboard roda sem erro
+if bash "$LDR" >/dev/null 2>&1; then
+  t_pass "leaderboard.sh executa sem erro"
+else
+  t_fail "leaderboard.sh com erro de execução" ""
+fi
+
+# Newsletter gera arquivos
+TMPDIR_NL=$(mktemp -d)
+( cd "$TMPDIR_NL" && bash "$REPO_ROOT_LOC/$NWS" 2026-Q2 >/dev/null 2>&1 ) || true
+REPO_ROOT_LOC="."
+if bash "$NWS" 2026-Q2 >/dev/null 2>&1; then
+  if [[ -f docs/newsletter/2026-Q2.md && -f docs/newsletter/2026-Q2.html ]]; then
+    t_pass "newsletter.sh gerou .md + .html"
+    grep -q '<!doctype html>' docs/newsletter/2026-Q2.html && t_pass "newsletter HTML é doctype-correto" \
+      || t_warn "newsletter HTML sem doctype" ""
+    rm -f docs/newsletter/2026-Q2.md docs/newsletter/2026-Q2.html
+  else
+    t_fail "newsletter.sh não criou arquivos esperados" ""
+  fi
+else
+  t_fail "newsletter.sh erro de execução" ""
+fi
+rm -rf "$TMPDIR_NL"
+
+# Docs novos
+for d in docs/governance/ai-champions.md docs/playbooks/ai-lab.md docs/plugins/opt-in-guide.md; do
+  [[ -f "$d" ]] && t_pass "doc v0.5: $d" || t_fail "doc v0.5 ausente" "$d"
+done
+
+# ============================================================
 section "Hook references — scripts existem"
 # ============================================================
 

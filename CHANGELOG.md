@@ -4,6 +4,20 @@ Todas as mudanças notáveis no MBit (MB AI SDK) serão documentadas aqui.
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/), versionamento semântico.
 
+## [0.5.0] — 2026-05-11
+
+### Adicionado
+- **`/mb-leaderboard`** — leaderboard saudável agregado por squad (nunca por pessoa). Mostra diversidade de comandos, retros realizadas e conquistas raras.
+- **`/mb-newsletter`** — newsletter trimestral gerada em Markdown + HTML inline-styled em `docs/newsletter/YYYY-QN.{md,html}`, pronta para email/intranet.
+- **`docs/governance/ai-champions.md`** — charter formal da comunidade MB AI Champions: princípios, elegibilidade, indicação, cadência (mensal), RACI, rotatividade, revisão semestral.
+- **`docs/playbooks/ai-lab.md`** — workshop quinzenal hands-on com **6 trilhas iniciais**: SDD, Observability, Security, Cost, Evals, Retros.
+- **`docs/plugins/opt-in-guide.md`** — guia explícito comparando `mb-evals` e `mb-cost`: quando ligar, overhead, saída.
+- **Smoke suite**: +8 testes para v0.5 (105 OK total).
+- **Completeness**: +7 itens (161 total).
+
+### Política
+- Leaderboard explicitamente **não** exibe pessoas. Newsletter sem cron automático (dispara 1x/trimestre manualmente).
+
 ## [0.3.2] — 2026-05-11
 
 ### Corrigido

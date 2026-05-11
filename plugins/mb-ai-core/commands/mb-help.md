@@ -64,7 +64,9 @@ Apresente visão geral concisa do MBit.
 - `/mb-retro-digest` — resumo das últimas N retros
 - `/mb-retro-promote` — promove ao core
 - `/mb-retro-extract-skill` — extrai skill custom
-- `/mb-retro-quarterly` — consolidação trimestral
+- `/mb-retro-quarterly` — consolidação trimestral (análise narrativa)
+- `/mb-newsletter` — newsletter trimestral (Markdown + HTML) ⬢ v0.5
+- `/mb-leaderboard` — leaderboard saudável agregado por squad ⬢ v0.5
 
 **Custo & avaliação**
 - `/mb-cost | -feature | -budget | -alert`
