@@ -1,3 +1,17 @@
+# Python
 __pycache__/
 *.pyc
+
+# OS
 .DS_Store
+
+# .mb/ é gerado nos repos dos squads (bootstrap output) — não pertence ao SDK
+# Aqui só existe se tests/smoke rodaram em modo que cria audit logs.
+.mb/
+
+# Snapshots locais (caso testes ou desenvolvimento criem)
+.mb/_snapshots/
+
+# Outputs de teste temporários
+/tmp-test/
+test-output.log
