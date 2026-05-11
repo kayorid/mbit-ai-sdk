@@ -208,6 +208,7 @@ EXPECTED_DOCS=(
   "docs/playbooks/ai-lab.md"
   "docs/plugins/opt-in-guide.md"
   "docs/governance/champion-certification.md"
+  "PILOT-SETUP.md"
 )
 for doc in "${EXPECTED_DOCS[@]}"; do
   if [[ -f "$doc" ]]; then

@@ -3,7 +3,9 @@
 > **Harness corporativo de desenvolvimento assistido por IA para o Mercado Bitcoin.**
 > Padroniza processo, garante auditabilidade e segurança, mantém squads alinhados sem engessar especialização técnica.
 
-[![Versão](https://img.shields.io/badge/versão-0.3.0-E8550C?style=flat-square)]() [![Status](https://img.shields.io/badge/status-piloto-orange?style=flat-square)]() [![Licença](https://img.shields.io/badge/licença-Proprietária-red?style=flat-square)]() [![Smoke tests](https://img.shields.io/badge/smoke%20tests-90%20OK-success?style=flat-square)]()
+[![Versão](https://img.shields.io/badge/versão-1.0.0-E8550C?style=flat-square)]() [![Status](https://img.shields.io/badge/status-production--ready-success?style=flat-square)]() [![Licença](https://img.shields.io/badge/licença-Proprietária-red?style=flat-square)]() [![Smoke tests](https://img.shields.io/badge/smoke%20tests-120%20OK-success?style=flat-square)]() [![E2E](https://img.shields.io/badge/e2e-11%20OK-success?style=flat-square)]()
+
+> 📦 **Vai instalar pela primeira vez (incluindo numa máquina nova)?** Leia **[PILOT-SETUP.md](./PILOT-SETUP.md)** — passo a passo completo de instalação + validação + smoke test num projeto piloto. Atalho: `bash scripts/pilot-check.sh` valida saúde do SDK em uma chamada.
 
 ```
        ╱▔▔▔▔▔▔▔╲

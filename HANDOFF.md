@@ -6,6 +6,8 @@
 **Versão atual:** v1.0.0 (tag `v1.0.0` no repo)
 **Estado:** ✅ Production-ready corporativo · Working tree limpo · todas as suites verdes
 
+> 🎯 **Vai testar numa máquina nova (transferindo zip)?** Siga **[PILOT-SETUP.md](./PILOT-SETUP.md)** — passo a passo discoverable pelo Claude Code. Atalho: `bash scripts/pilot-check.sh`.
+
 ---
 
 ## 🎯 Onde estamos

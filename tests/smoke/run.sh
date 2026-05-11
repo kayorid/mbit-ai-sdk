@@ -469,6 +469,21 @@ for d in docs/governance/ai-champions.md docs/playbooks/ai-lab.md docs/plugins/o
 done
 
 # ============================================================
+section "Onboarding / piloto"
+# ============================================================
+
+[[ -f PILOT-SETUP.md ]] && t_pass "PILOT-SETUP.md presente" || t_fail "PILOT-SETUP.md ausente" ""
+[[ -x scripts/pilot-check.sh ]] && t_pass "scripts/pilot-check.sh executável" || t_fail "pilot-check.sh ausente/sem +x" ""
+# Conteúdo mínimo do guia (sentinela)
+grep -q "Fase 6 — Smoke test ponta a ponta" PILOT-SETUP.md 2>/dev/null \
+  && t_pass "PILOT-SETUP.md tem fase de smoke documentada" \
+  || t_fail "PILOT-SETUP.md sem seção esperada" ""
+# Sintaxe do pilot-check (não rodar — evita recursão com este smoke)
+bash -n scripts/pilot-check.sh 2>/dev/null \
+  && t_pass "pilot-check.sh sintaxe OK" \
+  || t_fail "pilot-check.sh com erro de sintaxe" ""
+
+# ============================================================
 section "v1.0 — Maturidade (Slack/Jira/PagerDuty + comandos)"
 # ============================================================
 
