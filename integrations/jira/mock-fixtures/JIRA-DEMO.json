@@ -1,0 +1,10 @@
+{
+  "key": "JIRA-DEMO",
+  "title": "Suportar cotação cambial em moeda exótica",
+  "description": "Adicionar fluxo /quote para pares com BRLX. Considerar fallback quando provedor primário não cobre o par.",
+  "status": "To Do",
+  "reporter": "Maria Souza",
+  "type": "Story",
+  "labels": ["cambio", "feature"],
+  "url": "https://mb.atlassian.net/browse/JIRA-DEMO"
+}

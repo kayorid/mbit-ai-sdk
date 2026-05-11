@@ -4,6 +4,48 @@ Todas as mudanças notáveis no MBit (MB AI SDK) serão documentadas aqui.
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/), versionamento semântico.
 
+## [1.0.0] — 2026-05-11
+
+> **Marco: maturidade pedagógica.** SDK sai do "experimental interno" para **ferramenta corporativa com integrações reais**. Sem breaking changes — todos os comandos v0.5 continuam funcionando.
+
+### Adicionado — Slack Bot real (Bolt JS / Node 20)
+- `integrations/slack/app.js` — bot com handlers `retro <squad>` e `help`
+- Modo mock (`MB_MOCK_SLACK=1`) para CI/dev offline; fixtures embarcadas
+- `Dockerfile` produção-ready, suite `node:test` (4 testes verdes)
+- Substitui o stub `manifest.yaml` que existia em v0.3.x
+
+### Adicionado — Jira adapter + `/mb-spec-from-ticket`
+- `integrations/jira/adapter.sh` normaliza ticket → JSON canônico
+- Modos: mock (`MB_MOCK_JIRA=1`), Jira Cloud, Jira on-prem (`JIRA_LEGACY=1`)
+- `/mb-spec-from-ticket <KEY>` gera `docs/specs/_active/<YYYY-MM-DD>-<key>/requirements.md`
+
+### Adicionado — PagerDuty webhook → runbook automático
+- `integrations/pagerduty/webhook.js` (Node nativo, zero deps): HTTP server com validação HMAC-SHA256
+- Modo mock (`--mock <fixture>`) sem subir server
+- Template `runbook-template.md` com contexto, diagnóstico, mitigações, próximos passos
+- Output: `.mb/runbooks/INC-<id>.md` pré-populado
+
+### Adicionado — `/mb-adoption-report`
+- Relatório corporativo: squads ativos, retros, top categorias de commit, plugins/hooks com atividade
+- Saída terminal ou `--json` para dashboard
+- Privacidade: apenas dados agregados por squad
+
+### Adicionado — Certificação AI Champion
+- `docs/governance/champion-certification.md` com 4 níveis (Apprentice → Practitioner → Expert → Master)
+- Critérios mensuráveis auto-auditáveis via `/mb-adoption-report` e `/mb-leaderboard`
+- Cadência de avaliação por nível, política de desafiliação, revisão anual
+
+### Testes
+- Smoke: **120 OK** (era 105) — +15 testes v1.0
+- Completeness: **166 itens** (era 161)
+- E2E: 11 OK
+- node:test (Slack): 4 verdes
+- node:test (PagerDuty): 1 verde
+
+### Próximas evoluções (fora desta release)
+- `mb-knowledge-graph`, busca semântica (v1.5)
+- SIEM, IDE extension (v2.0+)
+
 ## [0.5.0] — 2026-05-11
 
 ### Adicionado

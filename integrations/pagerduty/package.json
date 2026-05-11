@@ -1,0 +1,13 @@
+{
+  "name": "mbit-pagerduty-webhook",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MBit AI SDK · webhook PagerDuty → gera runbook automático",
+  "type": "module",
+  "engines": { "node": ">=20.0.0" },
+  "scripts": {
+    "start": "node webhook.js",
+    "dev": "MB_MOCK_PAGERDUTY=1 node webhook.js --mock mock-fixtures/inc-demo.json",
+    "test": "node --test test/"
+  }
+}

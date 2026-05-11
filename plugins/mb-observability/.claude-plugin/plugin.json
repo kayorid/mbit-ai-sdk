@@ -1,7 +1,7 @@
 {
   "name": "mb-observability",
   "description": "MB AI SDK — processo de design e revisão de observabilidade (logs, métricas, traces, alertas, SLOs) stack-agnostic",
-  "version": "0.5.0",
+  "version": "1.0.0",
   "author": {
     "name": "Chapter AI - Mercado Bitcoin",
     "email": "chapter-ai@mercadobitcoin.com.br"

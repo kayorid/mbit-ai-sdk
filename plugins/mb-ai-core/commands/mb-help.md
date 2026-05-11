@@ -67,6 +67,8 @@ Apresente visão geral concisa do MBit.
 - `/mb-retro-quarterly` — consolidação trimestral (análise narrativa)
 - `/mb-newsletter` — newsletter trimestral (Markdown + HTML) ⬢ v0.5
 - `/mb-leaderboard` — leaderboard saudável agregado por squad ⬢ v0.5
+- `/mb-adoption-report` — relatório corporativo de adoção ⬢ v1.0
+- `/mb-spec-from-ticket <KEY>` — gera spec a partir de ticket Jira/Linear ⬢ v1.0
 
 **Custo & avaliação**
 - `/mb-cost | -feature | -budget | -alert`

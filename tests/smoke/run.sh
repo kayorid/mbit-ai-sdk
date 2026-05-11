@@ -21,6 +21,7 @@ PASS=0
 FAIL=0
 WARN=0
 START=$(date +%s)
+REPO_PATH="$(pwd)"
 
 t_pass() { printf "  ${GREEN}✓${RESET} %s\n" "$1"; PASS=$((PASS+1)); }
 t_fail() { printf "  ${RED}✗${RESET} %s\n" "$1"; printf "      ${DIM}↳ %s${RESET}\n" "$2"; FAIL=$((FAIL+1)); }
@@ -466,6 +467,63 @@ rm -rf "$TMPDIR_NL"
 for d in docs/governance/ai-champions.md docs/playbooks/ai-lab.md docs/plugins/opt-in-guide.md; do
   [[ -f "$d" ]] && t_pass "doc v0.5: $d" || t_fail "doc v0.5 ausente" "$d"
 done
+
+# ============================================================
+section "v1.0 — Maturidade (Slack/Jira/PagerDuty + comandos)"
+# ============================================================
+
+# Jira adapter mock
+JIRA="integrations/jira/adapter.sh"
+[[ -x "$JIRA" ]] && t_pass "jira/adapter.sh executável" || t_fail "jira/adapter.sh ausente" "$JIRA"
+if MB_MOCK_JIRA=1 bash "$JIRA" JIRA-DEMO 2>/dev/null | jq -e '.key == "JIRA-DEMO"' >/dev/null 2>&1; then
+  t_pass "jira adapter mock retorna JSON canônico"
+else
+  t_fail "jira adapter mock falhou" ""
+fi
+
+# /mb-spec-from-ticket
+SFT="plugins/mb-sdd/scripts/spec-from-ticket.sh"
+[[ -x "$SFT" ]] && t_pass "spec-from-ticket.sh executável" || t_fail "spec-from-ticket.sh ausente" "$SFT"
+TMP_SFT=$(mktemp -d)
+( cd "$TMP_SFT" && git init -q && git config user.email t@t && git config user.name t && \
+  MB_MOCK_JIRA=1 bash "$REPO_PATH/$SFT" JIRA-DEMO >/dev/null 2>&1 ) && \
+  [[ -f "$TMP_SFT/docs/specs/_active/$(date +%F)-jira-demo/requirements.md" ]] && \
+  t_pass "/mb-spec-from-ticket gera requirements.md" || t_fail "/mb-spec-from-ticket não gerou spec" ""
+rm -rf "$TMP_SFT"
+
+# /mb-adoption-report
+ADR="plugins/mb-retro/scripts/adoption-report.sh"
+[[ -x "$ADR" ]] && t_pass "adoption-report.sh executável" || t_fail "adoption-report.sh ausente" "$ADR"
+bash "$ADR" --period 30d >/dev/null 2>&1 && t_pass "adoption-report executa sem erro" || t_fail "adoption-report erro" ""
+bash "$ADR" --period 30d --json 2>/dev/null | jq -e '.squads_active != null' >/dev/null 2>&1 && \
+  t_pass "adoption-report --json emite estrutura válida" || t_fail "adoption-report --json inválido" ""
+
+# Slack bot
+[[ -f integrations/slack/app.js ]] && t_pass "slack/app.js presente" || t_fail "slack/app.js ausente" ""
+[[ -f integrations/slack/package.json ]] && t_pass "slack/package.json presente" || t_fail "" ""
+[[ -f integrations/slack/Dockerfile ]] && t_pass "slack/Dockerfile presente" || t_fail "" ""
+
+if command -v node >/dev/null 2>&1; then
+  if node --test integrations/slack/test/ >/dev/null 2>&1; then
+    t_pass "slack node:test suite passou (4 testes)"
+  else
+    t_fail "slack node:test suite falhou" "rode 'node --test integrations/slack/test/'"
+  fi
+  if node --test integrations/pagerduty/test/ >/dev/null 2>&1; then
+    t_pass "pagerduty node:test suite passou"
+  else
+    t_fail "pagerduty node:test suite falhou" ""
+  fi
+else
+  t_warn "node ausente — pulando suites JS" "instale Node 20+"
+fi
+
+# PagerDuty fixtures
+[[ -f integrations/pagerduty/webhook.js ]] && t_pass "pagerduty/webhook.js presente" || t_fail "" ""
+[[ -f integrations/pagerduty/runbook-template.md ]] && t_pass "pagerduty/runbook-template.md presente" || t_fail "" ""
+
+# Champion certification doc
+[[ -f docs/governance/champion-certification.md ]] && t_pass "doc v1.0: champion-certification.md" || t_fail "" ""
 
 # ============================================================
 section "Hook references — scripts existem"
