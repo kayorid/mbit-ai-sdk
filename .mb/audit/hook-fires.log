@@ -196,3 +196,43 @@
 2026-05-11T00:34:12Z | hook=pre-bash-destructive-confirm | status=BLOCKED | cmd=git reset --hard HEAD~5
 2026-05-11T00:34:12Z | hook=pre-bash-destructive-confirm | status=BLOCKED | cmd=psql -c "DROP TABLE users"
 2026-05-11T00:34:13Z | hook=pre-bash-destructive-confirm | status=ALLOWED_WITH_CONFIRMATION | cmd=rm -rf /tmp/foo # MB_CONFIRMED
+2026-05-11T00:35:26Z | hook=pre-tool-secret-scan | tool=Write | path=src/config.ts | status=BLOCKED | pattern=AKIA[0-9A-Z]{16}
+2026-05-11T00:35:26Z | hook=pre-tool-secret-scan | tool=Write | path=src/config.ts | status=BLOCKED | pattern=ghp_[A-Za-z0-9]{36}
+2026-05-11T00:35:26Z | hook=pre-tool-secret-scan | tool=Write | path=src/config.ts | status=BLOCKED | pattern=-----BEGIN (RSA|EC|DSA|OPENSSH|PGP) PRIVATE KEY-----
+2026-05-11T00:35:26Z | hook=pre-bash-destructive-confirm | status=BLOCKED | cmd=rm -rf /tmp/test-data
+2026-05-11T00:35:26Z | hook=pre-bash-destructive-confirm | status=BLOCKED | cmd=git push origin main --force
+2026-05-11T00:35:26Z | hook=pre-bash-destructive-confirm | status=BLOCKED | cmd=git reset --hard HEAD~5
+2026-05-11T00:35:26Z | hook=pre-bash-destructive-confirm | status=BLOCKED | cmd=psql -c "DROP TABLE users"
+2026-05-11T00:35:27Z | hook=pre-bash-destructive-confirm | status=ALLOWED_WITH_CONFIRMATION | cmd=rm -rf /tmp/foo # MB_CONFIRMED
+2026-05-11T00:35:28Z | hook=pre-tool-secret-scan | tool=Write | path=src/config.ts | status=BLOCKED | pattern=AKIA[0-9A-Z]{16}
+2026-05-11T00:35:29Z | hook=pre-tool-secret-scan | tool=Write | path=src/config.ts | status=BLOCKED | pattern=ghp_[A-Za-z0-9]{36}
+2026-05-11T00:35:29Z | hook=pre-tool-secret-scan | tool=Write | path=src/config.ts | status=BLOCKED | pattern=-----BEGIN (RSA|EC|DSA|OPENSSH|PGP) PRIVATE KEY-----
+2026-05-11T00:35:29Z | hook=pre-bash-destructive-confirm | status=BLOCKED | cmd=rm -rf /tmp/test-data
+2026-05-11T00:35:29Z | hook=pre-bash-destructive-confirm | status=BLOCKED | cmd=git push origin main --force
+2026-05-11T00:35:29Z | hook=pre-bash-destructive-confirm | status=BLOCKED | cmd=git reset --hard HEAD~5
+2026-05-11T00:35:29Z | hook=pre-bash-destructive-confirm | status=BLOCKED | cmd=psql -c "DROP TABLE users"
+2026-05-11T00:35:29Z | hook=pre-bash-destructive-confirm | status=ALLOWED_WITH_CONFIRMATION | cmd=rm -rf /tmp/foo # MB_CONFIRMED
+2026-05-11T00:35:31Z | hook=pre-tool-secret-scan | tool=Write | path=src/config.ts | status=BLOCKED | pattern=AKIA[0-9A-Z]{16}
+2026-05-11T00:35:31Z | hook=pre-tool-secret-scan | tool=Write | path=src/config.ts | status=BLOCKED | pattern=ghp_[A-Za-z0-9]{36}
+2026-05-11T00:35:31Z | hook=pre-tool-secret-scan | tool=Write | path=src/config.ts | status=BLOCKED | pattern=-----BEGIN (RSA|EC|DSA|OPENSSH|PGP) PRIVATE KEY-----
+2026-05-11T00:35:31Z | hook=pre-bash-destructive-confirm | status=BLOCKED | cmd=rm -rf /tmp/test-data
+2026-05-11T00:35:31Z | hook=pre-bash-destructive-confirm | status=BLOCKED | cmd=git push origin main --force
+2026-05-11T00:35:31Z | hook=pre-bash-destructive-confirm | status=BLOCKED | cmd=git reset --hard HEAD~5
+2026-05-11T00:35:31Z | hook=pre-bash-destructive-confirm | status=BLOCKED | cmd=psql -c "DROP TABLE users"
+2026-05-11T00:35:32Z | hook=pre-bash-destructive-confirm | status=ALLOWED_WITH_CONFIRMATION | cmd=rm -rf /tmp/foo # MB_CONFIRMED
+2026-05-11T00:35:33Z | hook=pre-tool-secret-scan | tool=Write | path=src/config.ts | status=BLOCKED | pattern=AKIA[0-9A-Z]{16}
+2026-05-11T00:35:33Z | hook=pre-tool-secret-scan | tool=Write | path=src/config.ts | status=BLOCKED | pattern=ghp_[A-Za-z0-9]{36}
+2026-05-11T00:35:33Z | hook=pre-tool-secret-scan | tool=Write | path=src/config.ts | status=BLOCKED | pattern=-----BEGIN (RSA|EC|DSA|OPENSSH|PGP) PRIVATE KEY-----
+2026-05-11T00:35:33Z | hook=pre-bash-destructive-confirm | status=BLOCKED | cmd=rm -rf /tmp/test-data
+2026-05-11T00:35:33Z | hook=pre-bash-destructive-confirm | status=BLOCKED | cmd=git push origin main --force
+2026-05-11T00:35:33Z | hook=pre-bash-destructive-confirm | status=BLOCKED | cmd=git reset --hard HEAD~5
+2026-05-11T00:35:33Z | hook=pre-bash-destructive-confirm | status=BLOCKED | cmd=psql -c "DROP TABLE users"
+2026-05-11T00:35:34Z | hook=pre-bash-destructive-confirm | status=ALLOWED_WITH_CONFIRMATION | cmd=rm -rf /tmp/foo # MB_CONFIRMED
+2026-05-11T00:35:35Z | hook=pre-tool-secret-scan | tool=Write | path=src/config.ts | status=BLOCKED | pattern=AKIA[0-9A-Z]{16}
+2026-05-11T00:35:36Z | hook=pre-tool-secret-scan | tool=Write | path=src/config.ts | status=BLOCKED | pattern=ghp_[A-Za-z0-9]{36}
+2026-05-11T00:35:36Z | hook=pre-tool-secret-scan | tool=Write | path=src/config.ts | status=BLOCKED | pattern=-----BEGIN (RSA|EC|DSA|OPENSSH|PGP) PRIVATE KEY-----
+2026-05-11T00:35:36Z | hook=pre-bash-destructive-confirm | status=BLOCKED | cmd=rm -rf /tmp/test-data
+2026-05-11T00:35:36Z | hook=pre-bash-destructive-confirm | status=BLOCKED | cmd=git push origin main --force
+2026-05-11T00:35:36Z | hook=pre-bash-destructive-confirm | status=BLOCKED | cmd=git reset --hard HEAD~5
+2026-05-11T00:35:36Z | hook=pre-bash-destructive-confirm | status=BLOCKED | cmd=psql -c "DROP TABLE users"
+2026-05-11T00:35:36Z | hook=pre-bash-destructive-confirm | status=ALLOWED_WITH_CONFIRMATION | cmd=rm -rf /tmp/foo # MB_CONFIRMED
